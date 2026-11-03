@@ -1,0 +1,7 @@
+# Synthetic profile; higher latent lognormal sigma, not a real-club claim.
+experiment: {name: synthetic_wealth_unequal, seed: 42}
+population:
+  size: 10000
+  wealth: {distribution: lognormal, mean: 10, sigma: 2}
+  contribution: {model: wealth_fraction, min_fraction: 0.001, max_fraction: 0.02}
+output: {directory: results/profiles/wealth_unequal}

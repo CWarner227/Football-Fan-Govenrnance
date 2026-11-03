@@ -1,0 +1,6 @@
+# Synthetic profile; no calibration to a real club.
+experiment: {name: synthetic_small_club, seed: 42}
+population:
+  size: 2000
+  contribution: {model: wealth_fraction, min_fraction: 0.001, max_fraction: 0.02}
+output: {directory: results/profiles/small_club}

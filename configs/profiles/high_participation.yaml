@@ -1,0 +1,6 @@
+# Synthetic common propensity, not an observed supporter behavior.
+experiment: {name: synthetic_high_participation, seed: 42}
+population:
+  size: 10000
+  participation_rate: {distribution: constant, value: 0.85}
+output: {directory: results/profiles/high_participation}

@@ -1,0 +1,144 @@
+# Synthetic research assumptions; not calibrated to real clubs.
+name: economic_downturn
+simulation:
+  population:
+    size: 200
+    wealth:
+      distribution: lognormal
+      mean: 10.0
+      sigma: 1.0
+    contribution:
+      model: wealth_fraction
+      min_fraction: 0.001
+      max_fraction: 0.02
+    loyalty:
+      distribution: beta
+      alpha: 4
+      beta: 2
+    participation_rate:
+      distribution: beta
+      alpha: 3
+      beta: 4
+    knowledge_score:
+      distribution: beta
+      alpha: 2
+      beta: 3
+    membership_age_days:
+      distribution: constant
+      value: 730
+    forecast_accuracy:
+      distribution: beta
+      alpha: 5
+      beta: 4
+    forecast_sample_count:
+      distribution: constant
+      value: 100
+    preferred_policy:
+      distribution: categorical
+      categories:
+      - community_investment
+      - financial_reserve
+      - neutral
+      probabilities:
+      - 0.45
+      - 0.45
+      - 0.1
+    adversarial_fraction: 0
+  governance:
+    waiting_period_days: 0
+    quorum: 0
+    approval_threshold: 0.5
+  proposal:
+    proposal_id: synthetic-funding
+    category: funding
+    metadata:
+      policy_alignment: community_investment
+      synthetic: true
+  participation:
+    name: probabilistic
+  preference:
+    name: synthetic
+    parameters:
+      approval_probability: 0.5
+      abstention_probability: 0
+  voting:
+    strategies:
+    - equal
+    - name: proportional
+      parameters:
+        reference_contribution: 100
+    - name: capped
+      parameters:
+        max_weight: 5
+        base_weight: 1
+        reference_contribution: 100
+    - name: diminishing
+      parameters:
+        max_weight: 5
+        base_weight: 1
+        reference_contribution: 100
+    - name: hybrid
+      parameters:
+        default_strategy: equal
+        proposal_rules:
+          constitutional: equal
+          board_election: equal
+          fan_experience: equal
+          funding:
+            name: capped
+            parameters:
+              max_weight: 5
+              base_weight: 1
+              reference_contribution: 100
+    - name: expertise
+      parameters:
+        expertise_multiplier: 2
+        minimum_samples: 20
+        confidence_z: 1.96
+        chance_accuracy: 0.5
+        max_weight: 3
+timeline:
+  start_date: '2027-01-01'
+  duration_months: 12
+  timestep: monthly
+elections:
+  interval_months: 6
+honest_turnout: 0.5
+attacks: []
+defenses:
+- name: identity_verification
+  parameters:
+    strength: 1
+economics:
+  enabled: true
+  starting_cash: 60000
+  operating_revenue: 18000
+  operating_expenses: 10000
+  wages: 7000
+  membership_fee: 10
+  renewal_probability: 0.95
+  admin_cost_per_member: 0.1
+  sporting_volatility: 0.1
+  shocks:
+  - name: economic_downturn
+    start_month: 3
+    duration_months: 4
+    severity: 0.6
+    recovery_months: 3
+experiment:
+  trials: 3
+  seed: 42
+  variants:
+  - control
+  - unprotected
+  - defended
+metrics:
+- capture
+- defense
+- economics
+- combined
+output:
+  directory: results/phase3/economic_downturn
+  formats:
+  - csv
+  - json

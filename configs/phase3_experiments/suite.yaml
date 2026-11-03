@@ -1,0 +1,8 @@
+experiments:
+- A_wealthy_investor_capture.yaml
+- B_coordinated_rival_infiltration.yaml
+- C_sybil_resistance.yaml
+- D_low_turnout_capture.yaml
+- E_defensive_policy_comparison.yaml
+- F_economic_resilience.yaml
+- G_combined_crisis.yaml

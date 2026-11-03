@@ -1,0 +1,15 @@
+experiment:
+  name: default
+  trials: 1
+  seed: 42
+population:
+  size: 10000
+governance:
+  waiting_period_days: 180
+  quorum: 0.2
+  approval_threshold: 0.5
+voting:
+  strategies: [equal]
+output:
+  directory: results/default
+  formats: [csv, json]

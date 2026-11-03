@@ -1,0 +1,26 @@
+# Small illustrative grid; all relationships are hypothetical.
+experiment:
+  name: behavior_sweep
+  trials: 10
+  seed: 42
+  population_profiles:
+    small: {size: 2000}
+    medium: {size: 10000}
+  waiting_periods: [0, 180, 365]
+  proposal_categories: [funding, fan_experience]
+  participation_models:
+    - {name: probabilistic}
+    - {name: constant, parameters: {probability: 0.6}}
+    - name: attribute_based
+      parameters:
+        intercept: -1
+        coefficients: {loyalty: 2, membership_age_days: 0.5}
+        scales: {membership_age_days: 365}
+voting: {strategies: [equal, proportional, capped, diminishing, hybrid, expertise]}
+preference:
+  name: policy
+  parameters: {alignment_probability: 0.8, mismatch_probability: 0.2, neutral_probability: 0.5}
+proposal:
+  category: funding
+  metadata: {policy_alignment: community_investment}
+output: {directory: results/behavior_sweep, formats: [csv, json]}

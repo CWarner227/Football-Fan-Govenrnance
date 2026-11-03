@@ -1,0 +1,56 @@
+# Python environments and compiled files
+.venv*/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyd
+
+# Test, coverage, lint, and type-checker caches
+.pytest_cache/
+.pytest-*/
+.ruff_cache/
+.mypy_cache/
+.pyright/
+.hypothesis/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Builds and dependency/tool caches (keep uv.lock)
+build/
+dist/
+*.egg-info/
+.eggs/
+.uv-cache/
+
+# Local agent and plotting state
+.serena/
+.codex/
+.matplotlib/
+
+# Generated simulation output; scripts/configs reproduce these artifacts
+results/*
+!results/.gitkeep
+
+# Local credentials and environment configuration
+.env
+.env.*
+!.env.example
+!.env.sample
+*.key
+*.pem
+
+# Editor, OS, and temporary files
+.idea/
+.vscode/
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log
+*.tmp
+*.swp
+*~
+.phase3-wheel-*/

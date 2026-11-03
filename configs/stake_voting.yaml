@@ -1,0 +1,12 @@
+experiment:
+  name: stake_voting
+  seed: 42
+population:
+  size: 10000
+governance:
+  waiting_period_days: 180
+voting:
+  strategies: [proportional]
+output:
+  directory: results/stake_voting
+  formats: [csv, json]
