@@ -104,3 +104,26 @@ The application is an unauthenticated trusted local research tool. Only one API
 process may own its data directory. Blockchain is a disabled extension boundary,
 not an implemented integration. Intermediate trial progress remains indeterminate
 where the engine exposes no reliable callback.
+
+## Docker delivery verification (2026-11-04)
+
+The `Chris` branch adds a multi-stage Dockerfile, Compose configuration,
+`.dockerignore`, and Windows start/stop launchers. FastAPI serves the production
+React build and `/api/v1` from one non-root container on loopback port 8000.
+
+Observed checks:
+
+- `docker compose config --quiet` passed.
+- Native Linux ARM64 image build and health-checked startup passed on Docker Desktop.
+- Runtime identity verified as UID/GID 10001; built frontend assets present;
+  host `node_modules` and Git metadata absent.
+- Both real Chromium end-to-end tests passed against the container in **9.7 seconds**.
+- Forced container recreation preserved a saved configuration, a completed run,
+  and all three summary rows from its real engine execution.
+- `Start-Dashboard.cmd` completed successfully, waited for health, reused cached
+  build layers and launched the dashboard URL. PowerShell parser checks passed.
+
+The Compose volume is separate from host `data/dashboard/`. Stop/rebuild preserves
+it; explicitly deleting the volume removes its stored configurations and runs.
+Docker Desktop must be running in Linux-container mode and host port 8000 must
+be available. The container remains running for the requested local handoff.

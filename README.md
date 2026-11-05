@@ -13,6 +13,23 @@ interactive results, matched comparisons, persistent history and exports.
 
 ## Research dashboard
 
+With Docker Desktop running, double-click **Start-Dashboard.cmd** to build and
+start the frontend and backend together, then open the dashboard automatically.
+Double-click **Stop-Dashboard.cmd** to stop it. No local Python or Node install
+is needed. The first build downloads dependencies and takes longer.
+
+Or run from the repository root:
+
+```sh
+docker compose up --build -d --wait
+```
+
+Open [the Docker dashboard](http://localhost:8000). Run history and saved
+configurations persist in the `football-governance_dashboard-data` Docker volume
+across rebuilds and stops. Existing host `data/dashboard/` is separate. Use
+`docker compose logs -f` for logs and `docker compose stop` to stop. Port 8000 must
+be free. This publishes only to your computer's loopback interface.
+
 From this source checkout, start the API:
 
 ```sh
