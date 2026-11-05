@@ -7,6 +7,53 @@ and economic shocks. It preserves the six voting models, matched election inputs
 and Phase 1/2 commands. Results
 are synthetic assumptions, not evidence that a rule is effective in real clubs.
 
+Phase 3.5 adds a local **Research Dashboard** with a schema-driven simulation
+builder, scenario and population-profile libraries, background execution,
+interactive results, matched comparisons, persistent history and exports.
+
+## Research dashboard
+
+From this source checkout, start the API:
+
+```sh
+uv sync --all-extras --group dev
+uv run uvicorn fan_governance.api.main:app --host 127.0.0.1 --port 8000
+```
+
+In another terminal:
+
+```sh
+cd frontend
+npm ci
+npm run dev
+```
+
+Open [the local dashboard](http://localhost:5173) or
+[API documentation](http://127.0.0.1:8000/docs). The dashboard is a trusted,
+unauthenticated local research tool; keep a single API process bound to loopback.
+Configuration and history persist under ignored `data/dashboard/`.
+
+For one-server use, run `npm run build` in `frontend/` before starting the API;
+the API then serves the built dashboard at [localhost:8000](http://localhost:8000).
+See [dashboard usage](docs/DASHBOARD_USAGE.md),
+[architecture](docs/DASHBOARD_ARCHITECTURE.md),
+[integration guide](docs/INTEGRATION_GUIDE.md), and
+[verification evidence](docs/PHASE35_VALIDATION.md).
+
+Dashboard checks:
+
+```sh
+uv run --all-extras pytest
+cd frontend
+npm test
+npm run lint
+npm run build
+npm run test:e2e
+```
+
+The Playwright tests require both local servers and its Chromium browser
+(`npx playwright install chromium`). They execute actual small simulations.
+
 ## Installation and execution
 
 Python 3.12 or newer is required. Using uv:
@@ -148,5 +195,6 @@ Effective voters is inverse concentration, not an actual participant headcount.
 - [Historical Phase 1 demonstration](docs/DEMONSTRATION.md)
 - [Phase 2 requirements](docs/PHASE2_REQUEST.md)
 
-No blockchain, database, real transactions, web frontend or calibrated football
-model is required. Canonical identity is assumed; this is not an identity-fraud defense.
+The dashboard runs locally without a database server or blockchain. Real
+transactions and a calibrated football model are outside this research tool.
+Canonical identity is assumed; this is not an identity-fraud defense.

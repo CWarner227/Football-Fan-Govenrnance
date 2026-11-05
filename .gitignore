@@ -54,3 +54,14 @@ Desktop.ini
 *.swp
 *~
 .phase3-wheel-*/
+
+# Local dashboard storage and JavaScript builds
+data/dashboard/*
+!data/dashboard/.gitkeep
+frontend/node_modules/
+frontend/dist/
+frontend/coverage/
+frontend/playwright-report/
+frontend/test-results/
+frontend/.vite/
+frontend/*.tsbuildinfo

@@ -35,6 +35,10 @@ class ModelRegistry:
     def names(self) -> dict[str, list[str]]:
         return {category: sorted(group) for category, group in sorted(self._factories.items())}
 
+    def factories(self) -> dict[str, dict[str, Callable[..., Any]]]:
+        """Return a detached discovery view without exposing registry mutation."""
+        return {category: dict(group) for category, group in self._factories.items()}
+
 
 def default_registry() -> ModelRegistry:
     from fan_governance.membership.eligibility import StandardEligibility
