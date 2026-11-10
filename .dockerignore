@@ -8,6 +8,9 @@
 !src/**
 !configs/
 !configs/**
+!examples/
+examples/*
+!examples/presentation_studies.py
 !frontend/
 !frontend/package.json
 !frontend/package-lock.json

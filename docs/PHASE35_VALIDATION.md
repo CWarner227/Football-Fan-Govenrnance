@@ -127,3 +127,35 @@ The Compose volume is separate from host `data/dashboard/`. Stop/rebuild preserv
 it; explicitly deleting the volume removes its stored configurations and runs.
 Docker Desktop must be running in Linux-container mode and host port 8000 must
 be available. The container remains running for the requested local handoff.
+
+## Presentation preset verification (2026-11-10)
+
+Added 95 configurations across 19 study groups: one 10-trial pilot and four
+25-trial presentation batches per group. All 76 configured cells are validated
+through the dashboard's actual schema, factories and resource checks; the
+largest preset has a 274,500,000 work-unit estimate (below 300,000,000).
+
+Observed checks:
+
+- Complete Python suite: **410 passed, 1 skipped in 185.52 seconds**. The skip
+  remains the Windows symlink privilege test. All 121 Python files pass Ruff
+  lint and formatting checks.
+- New tests cover matched seed blocks, six voting models, baseline profile and
+  proposal axes, waiting-period timing, alias budgets, defense packages,
+  cross-platform idempotent import, conflict preservation, and read-only
+  container import mode.
+- **19 actual single-trial smoke executions** passed, one per study group using
+  its first grid cell and all six models/three variants. These are execution
+  checks, not completed 10-trial pilots or the presentation campaign.
+- Imported all **95 presets** into the running dashboard's Saved configurations.
+  Reimport from the rebuilt Linux container reported **0 created, 95 existing**.
+- Real Chromium loaded and validated B01 presets for Studies 01–07 through the
+  frontend, checking 25 trials and seed 11001. No study was submitted by this
+  browser verification.
+- `Import-Study-Configurations.cmd` successfully rebuilt/started the healthy
+  Docker app, skipped existing presets, and opened Experiments. Import and
+  generation do not queue simulations.
+
+The source YAMLs, workload manifest, reproducible generator/importer and
+`PRESENTATION_STUDIES.md` explain batch identity, pilot exclusion, model/variant
+matching, redundant controls, and export-based cross-seed uncertainty analysis.

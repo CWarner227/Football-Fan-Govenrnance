@@ -26,6 +26,7 @@ RUN uv sync --locked --extra dashboard --no-dev \
     && mkdir -p /app/data/dashboard \
     && chown -R dashboard:dashboard /app/data
 COPY --from=frontend /frontend/dist/ ./frontend/dist/
+COPY examples/presentation_studies.py ./examples/presentation_studies.py
 USER dashboard
 EXPOSE 8000
 HEALTHCHECK --interval=5s --timeout=3s --start-period=15s --retries=6 \

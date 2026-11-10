@@ -1,0 +1,385 @@
+# Study 01 Voting baseline | B02 of 04 - 25 trials
+# Presentation v1; seed 11002. 10,000 supporters; ordinary/wealth-unequal/low-participation profiles x two proposal categories. Use CONTROL for baseline plots; the other required variants are redundant matched references, not extra samples. Honest turnout uses the population participation model; economics disabled. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.
+name: presentation_v1_01-baseline_batch02
+simulation:
+  experiment:
+    name: fan_governance
+    trials: 1
+    seed: 42
+    population_sizes: null
+    waiting_periods: null
+    participation_levels: null
+    wealth_distributions: null
+    population_profiles: null
+    participation_models: null
+    proposal_categories: null
+  population:
+    size: 10000
+    seed: null
+    contribution_model: wealth_fraction
+    allow_unfunded_contributions: false
+    contribution_fraction_distribution:
+      type: uniform
+      parameters:
+        low: 0.001
+        high: 0.02
+      lower: null
+      upper: null
+      categories: null
+      probabilities: null
+    forecast_accuracy_distribution:
+      type: beta
+      parameters:
+        alpha: 5.0
+        beta: 4.0
+      lower: null
+      upper: null
+      categories: null
+      probabilities: null
+    forecast_sample_count_distribution:
+      type: constant
+      parameters:
+        value: 100.0
+      lower: null
+      upper: null
+      categories: null
+      probabilities: null
+    preferred_policy_distribution:
+      type: categorical
+      parameters: {}
+      lower: null
+      upper: null
+      categories:
+      - community_investment
+      - financial_reserve
+      - neutral
+      probabilities:
+      - 0.45
+      - 0.45
+      - 0.1
+    adversarial_fraction: 0.0
+    wealth_distribution:
+      type: lognormal
+      parameters:
+        mean: 10.0
+        sigma: 1.0
+      lower: null
+      upper: null
+      categories: null
+      probabilities: null
+    contribution_distribution:
+      type: lognormal
+      parameters:
+        mean: 4.0
+        sigma: 1.5
+      lower: 0.0
+      upper: null
+      categories: null
+      probabilities: null
+    membership_age_days_distribution:
+      type: constant
+      parameters:
+        value: 730.0
+      lower: null
+      upper: null
+      categories: null
+      probabilities: null
+    loyalty_distribution:
+      type: beta
+      parameters:
+        alpha: 4.0
+        beta: 2.0
+      lower: null
+      upper: null
+      categories: null
+      probabilities: null
+    knowledge_distribution:
+      type: beta
+      parameters:
+        alpha: 2.0
+        beta: 3.0
+      lower: null
+      upper: null
+      categories: null
+      probabilities: null
+    participation_probability_distribution:
+      type: beta
+      parameters:
+        alpha: 3.0
+        beta: 4.0
+      lower: null
+      upper: null
+      categories: null
+      probabilities: null
+    correlations: {}
+  governance:
+    waiting_period_days: 0
+    eligibility:
+      name: standard
+      parameters: {}
+    quorum: 0.0
+    quorum_basis: eligible_members
+    approval_threshold: 0.5
+  voting:
+    strategies:
+    - equal
+    - name: proportional
+      parameters:
+        reference_contribution: 100
+    - name: capped
+      parameters:
+        max_weight: 5
+        base_weight: 1
+        reference_contribution: 100
+    - name: diminishing
+      parameters:
+        max_weight: 5
+        base_weight: 1
+        reference_contribution: 100
+    - name: hybrid
+      parameters:
+        default_strategy: equal
+        proposal_rules:
+          constitutional: equal
+          board_election: equal
+          fan_experience: equal
+          funding:
+            name: capped
+            parameters:
+              max_weight: 5
+              base_weight: 1
+              reference_contribution: 100
+    - name: expertise
+      parameters:
+        expertise_multiplier: 2
+        minimum_samples: 20
+        confidence_z: 1.96
+        chance_accuracy: 0.5
+        max_weight: 3
+  participation:
+    name: probabilistic
+    parameters: {}
+  preference:
+    name: synthetic
+    parameters:
+      approval_probability: 0.5
+      abstention_probability: 0
+  proposal:
+    proposal_id: synthetic-funding
+    category: funding
+    options:
+    - approve
+    - reject
+    quorum: null
+    approval_threshold: null
+    waiting_period_days: null
+    eligibility: null
+    voting_strategy: null
+    metadata:
+      policy_alignment: community_investment
+      synthetic: true
+  output:
+    directory: results
+    formats:
+    - csv
+    - json
+timeline:
+  start_date: '2027-01-01'
+  duration_months: 1
+  timestep: monthly
+elections:
+  interval_months: 1
+attacks: []
+defenses: []
+economics:
+  enabled: false
+  record_individual_transactions: false
+  income_distribution:
+    type: lognormal
+    parameters:
+      mean: 7.8
+      sigma: 0.6
+    lower: 0.0
+    upper: null
+    categories: null
+    probabilities: null
+  disposable_income_fraction: 0.2
+  income_wealth_correlation: null
+  starting_cash: 100000.0
+  operating_revenue: 10000.0
+  operating_expenses: 5000.0
+  wages: 3000.0
+  transfer_spending: 0.0
+  debt_principal: 0.0
+  debt_repayment: 0.0
+  debt_interest: 0.0
+  membership_fee: 0.0
+  renewal_probability: 1.0
+  contribution_willingness: 0.0
+  renewal_interval_months: 12
+  membership_growth_rate: 0.0
+  admin_cost_per_member: 0.0
+  squad_quality: 1.0
+  recruitment_effectiveness: 1.0
+  management_quality: 1.0
+  injury_rate: 0.05
+  sporting_volatility: 0.1
+  sporting_revenue_sensitivity: 0.1
+  matchday_revenue_fraction: 0.5
+  investors: []
+  investor_voting_offer: false
+  investor_voting_power_share: 0.0
+  investor_policy_factor: 1.0
+  shocks: []
+experiment:
+  trials: 25
+  seed: 11002
+  variants:
+  - control
+  - unprotected
+  - defended
+  grid:
+    simulation.population:
+    - size: 10000
+      wealth:
+        distribution: lognormal
+        mean: 10.0
+        sigma: 1.0
+      contribution:
+        model: wealth_fraction
+        min_fraction: 0.001
+        max_fraction: 0.02
+      loyalty:
+        distribution: beta
+        alpha: 4
+        beta: 2
+      participation_rate:
+        distribution: beta
+        alpha: 3
+        beta: 4
+      knowledge_score:
+        distribution: beta
+        alpha: 2
+        beta: 3
+      membership_age_days:
+        distribution: constant
+        value: 730
+      forecast_accuracy:
+        distribution: beta
+        alpha: 5
+        beta: 4
+      forecast_sample_count:
+        distribution: constant
+        value: 100
+      preferred_policy:
+        distribution: categorical
+        categories:
+        - community_investment
+        - financial_reserve
+        - neutral
+        probabilities:
+        - 0.45
+        - 0.45
+        - 0.1
+      adversarial_fraction: 0
+      seed: null
+    - size: 10000
+      wealth:
+        distribution: lognormal
+        mean: 10
+        sigma: 2
+      contribution:
+        model: wealth_fraction
+        min_fraction: 0.001
+        max_fraction: 0.02
+      loyalty:
+        distribution: beta
+        alpha: 4
+        beta: 2
+      participation_rate:
+        distribution: beta
+        alpha: 3
+        beta: 4
+      knowledge_score:
+        distribution: beta
+        alpha: 2
+        beta: 3
+      membership_age_days:
+        distribution: constant
+        value: 730
+      forecast_accuracy:
+        distribution: beta
+        alpha: 5
+        beta: 4
+      forecast_sample_count:
+        distribution: constant
+        value: 100
+      preferred_policy:
+        distribution: categorical
+        categories:
+        - community_investment
+        - financial_reserve
+        - neutral
+        probabilities:
+        - 0.45
+        - 0.45
+        - 0.1
+      adversarial_fraction: 0
+      seed: null
+    - size: 10000
+      wealth:
+        distribution: lognormal
+        mean: 10.0
+        sigma: 1.0
+      contribution:
+        model: wealth_fraction
+        min_fraction: 0.001
+        max_fraction: 0.02
+      loyalty:
+        distribution: beta
+        alpha: 4
+        beta: 2
+      participation_rate:
+        distribution: constant
+        value: 0.15
+      knowledge_score:
+        distribution: beta
+        alpha: 2
+        beta: 3
+      membership_age_days:
+        distribution: constant
+        value: 730
+      forecast_accuracy:
+        distribution: beta
+        alpha: 5
+        beta: 4
+      forecast_sample_count:
+        distribution: constant
+        value: 100
+      preferred_policy:
+        distribution: categorical
+        categories:
+        - community_investment
+        - financial_reserve
+        - neutral
+        probabilities:
+        - 0.45
+        - 0.45
+        - 0.1
+      adversarial_fraction: 0
+      seed: null
+    simulation.proposal.category:
+    - constitutional
+    - funding
+honest_turnout: null
+economic_turnout_sensitivity: 0.0
+metrics:
+- capture
+- defense
+- economics
+- combined
+output:
+  directory: results/presentation/01-baseline/batch02
+  formats:
+  - csv
+  - json

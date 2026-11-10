@@ -50,6 +50,12 @@ Open [the local dashboard](http://localhost:5173) or
 unauthenticated local research tool; keep a single API process bound to loopback.
 Configuration and history persist under ignored `data/dashboard/`.
 
+Presentation studies: double-click **Import-Study-Configurations.cmd** to add
+the seven studies and combined-crisis extension to Saved configurations. Open
+**Experiments**, search `Study 01` through `Study 07`, then load a pilot or named
+25-trial batch. See [the study run guide](docs/PRESENTATION_STUDIES.md) for the
+95 presets, run order, seed rules and how to reach 100 trials per condition.
+
 For one-server use, run `npm run build` in `frontend/` before starting the API;
 the API then serves the built dashboard at [localhost:8000](http://localhost:8000).
 See [dashboard usage](docs/DASHBOARD_USAGE.md),

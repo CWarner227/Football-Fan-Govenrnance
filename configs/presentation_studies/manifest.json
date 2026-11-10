@@ -1,0 +1,1237 @@
+[
+  {
+    "group": "01-baseline",
+    "stage": "pilot",
+    "name": "Study 01 Voting baseline | PILOT 10 trials",
+    "description": "Presentation v1; seed 99001. 10,000 supporters; ordinary/wealth-unequal/low-participation profiles x two proposal categories. Use CONTROL for baseline plots; the other required variants are redundant matched references, not extra samples. Honest turnout uses the population participation model; economics disabled. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 6,
+      "total_trials": 60,
+      "trajectory_runs": 1080,
+      "work_units": 21600000
+    },
+    "file": "presentation_v1_01-baseline_pilot.yaml"
+  },
+  {
+    "group": "01-baseline",
+    "stage": "batch01",
+    "name": "Study 01 Voting baseline | B01 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11001. 10,000 supporters; ordinary/wealth-unequal/low-participation profiles x two proposal categories. Use CONTROL for baseline plots; the other required variants are redundant matched references, not extra samples. Honest turnout uses the population participation model; economics disabled. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 6,
+      "total_trials": 150,
+      "trajectory_runs": 2700,
+      "work_units": 54000000
+    },
+    "file": "presentation_v1_01-baseline_batch01.yaml"
+  },
+  {
+    "group": "01-baseline",
+    "stage": "batch02",
+    "name": "Study 01 Voting baseline | B02 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11002. 10,000 supporters; ordinary/wealth-unequal/low-participation profiles x two proposal categories. Use CONTROL for baseline plots; the other required variants are redundant matched references, not extra samples. Honest turnout uses the population participation model; economics disabled. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 6,
+      "total_trials": 150,
+      "trajectory_runs": 2700,
+      "work_units": 54000000
+    },
+    "file": "presentation_v1_01-baseline_batch02.yaml"
+  },
+  {
+    "group": "01-baseline",
+    "stage": "batch03",
+    "name": "Study 01 Voting baseline | B03 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11003. 10,000 supporters; ordinary/wealth-unequal/low-participation profiles x two proposal categories. Use CONTROL for baseline plots; the other required variants are redundant matched references, not extra samples. Honest turnout uses the population participation model; economics disabled. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 6,
+      "total_trials": 150,
+      "trajectory_runs": 2700,
+      "work_units": 54000000
+    },
+    "file": "presentation_v1_01-baseline_batch03.yaml"
+  },
+  {
+    "group": "01-baseline",
+    "stage": "batch04",
+    "name": "Study 01 Voting baseline | B04 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11004. 10,000 supporters; ordinary/wealth-unequal/low-participation profiles x two proposal categories. Use CONTROL for baseline plots; the other required variants are redundant matched references, not extra samples. Honest turnout uses the population participation model; economics disabled. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 6,
+      "total_trials": 150,
+      "trajectory_runs": 2700,
+      "work_units": 54000000
+    },
+    "file": "presentation_v1_01-baseline_batch04.yaml"
+  },
+  {
+    "group": "02-wealthy",
+    "stage": "pilot",
+    "name": "Study 02 Wealthy capture | PILOT 10 trials",
+    "description": "Presentation v1; seed 99001. 200 supporters; attacker contributions 5k/50k/250k; 300k financial budget; one operation permits the specified single lump-sum join. Compare matched variants. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 30,
+      "trajectory_runs": 720,
+      "work_units": 52967520
+    },
+    "file": "presentation_v1_02-wealthy_pilot.yaml"
+  },
+  {
+    "group": "02-wealthy",
+    "stage": "batch01",
+    "name": "Study 02 Wealthy capture | B01 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11001. 200 supporters; attacker contributions 5k/50k/250k; 300k financial budget; one operation permits the specified single lump-sum join. Compare matched variants. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 132418800
+    },
+    "file": "presentation_v1_02-wealthy_batch01.yaml"
+  },
+  {
+    "group": "02-wealthy",
+    "stage": "batch02",
+    "name": "Study 02 Wealthy capture | B02 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11002. 200 supporters; attacker contributions 5k/50k/250k; 300k financial budget; one operation permits the specified single lump-sum join. Compare matched variants. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 132418800
+    },
+    "file": "presentation_v1_02-wealthy_batch02.yaml"
+  },
+  {
+    "group": "02-wealthy",
+    "stage": "batch03",
+    "name": "Study 02 Wealthy capture | B03 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11003. 200 supporters; attacker contributions 5k/50k/250k; 300k financial budget; one operation permits the specified single lump-sum join. Compare matched variants. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 132418800
+    },
+    "file": "presentation_v1_02-wealthy_batch03.yaml"
+  },
+  {
+    "group": "02-wealthy",
+    "stage": "batch04",
+    "name": "Study 02 Wealthy capture | B04 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11004. 200 supporters; attacker contributions 5k/50k/250k; 300k financial budget; one operation permits the specified single lump-sum join. Compare matched variants. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 132418800
+    },
+    "file": "presentation_v1_02-wealthy_batch04.yaml"
+  },
+  {
+    "group": "03-sybil-v0",
+    "stage": "pilot",
+    "name": "Study 03 Sybil verification 0 | PILOT 10 trials",
+    "description": "Presentation v1; seed 99001. 200 supporters; 50/200/400 attempted aliases (0.25/1/2 per honest supporter). Verification strength 0; operational budget equals attempted identities. Base false-acceptance probability 0.5 and genuine rejection 0.01 are synthetic assumptions. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 30,
+      "trajectory_runs": 720,
+      "work_units": 109800000
+    },
+    "file": "presentation_v1_03-sybil-v0_pilot.yaml"
+  },
+  {
+    "group": "03-sybil-v0",
+    "stage": "batch01",
+    "name": "Study 03 Sybil verification 0 | B01 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11001. 200 supporters; 50/200/400 attempted aliases (0.25/1/2 per honest supporter). Verification strength 0; operational budget equals attempted identities. Base false-acceptance probability 0.5 and genuine rejection 0.01 are synthetic assumptions. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 274500000
+    },
+    "file": "presentation_v1_03-sybil-v0_batch01.yaml"
+  },
+  {
+    "group": "03-sybil-v0",
+    "stage": "batch02",
+    "name": "Study 03 Sybil verification 0 | B02 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11002. 200 supporters; 50/200/400 attempted aliases (0.25/1/2 per honest supporter). Verification strength 0; operational budget equals attempted identities. Base false-acceptance probability 0.5 and genuine rejection 0.01 are synthetic assumptions. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 274500000
+    },
+    "file": "presentation_v1_03-sybil-v0_batch02.yaml"
+  },
+  {
+    "group": "03-sybil-v0",
+    "stage": "batch03",
+    "name": "Study 03 Sybil verification 0 | B03 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11003. 200 supporters; 50/200/400 attempted aliases (0.25/1/2 per honest supporter). Verification strength 0; operational budget equals attempted identities. Base false-acceptance probability 0.5 and genuine rejection 0.01 are synthetic assumptions. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 274500000
+    },
+    "file": "presentation_v1_03-sybil-v0_batch03.yaml"
+  },
+  {
+    "group": "03-sybil-v0",
+    "stage": "batch04",
+    "name": "Study 03 Sybil verification 0 | B04 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11004. 200 supporters; 50/200/400 attempted aliases (0.25/1/2 per honest supporter). Verification strength 0; operational budget equals attempted identities. Base false-acceptance probability 0.5 and genuine rejection 0.01 are synthetic assumptions. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 274500000
+    },
+    "file": "presentation_v1_03-sybil-v0_batch04.yaml"
+  },
+  {
+    "group": "03-sybil-v0.8",
+    "stage": "pilot",
+    "name": "Study 03 Sybil verification 0.8 | PILOT 10 trials",
+    "description": "Presentation v1; seed 99001. 200 supporters; 50/200/400 attempted aliases (0.25/1/2 per honest supporter). Verification strength 0.8; operational budget equals attempted identities. Base false-acceptance probability 0.5 and genuine rejection 0.01 are synthetic assumptions. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 30,
+      "trajectory_runs": 720,
+      "work_units": 109800000
+    },
+    "file": "presentation_v1_03-sybil-v0p8_pilot.yaml"
+  },
+  {
+    "group": "03-sybil-v0.8",
+    "stage": "batch01",
+    "name": "Study 03 Sybil verification 0.8 | B01 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11001. 200 supporters; 50/200/400 attempted aliases (0.25/1/2 per honest supporter). Verification strength 0.8; operational budget equals attempted identities. Base false-acceptance probability 0.5 and genuine rejection 0.01 are synthetic assumptions. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 274500000
+    },
+    "file": "presentation_v1_03-sybil-v0p8_batch01.yaml"
+  },
+  {
+    "group": "03-sybil-v0.8",
+    "stage": "batch02",
+    "name": "Study 03 Sybil verification 0.8 | B02 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11002. 200 supporters; 50/200/400 attempted aliases (0.25/1/2 per honest supporter). Verification strength 0.8; operational budget equals attempted identities. Base false-acceptance probability 0.5 and genuine rejection 0.01 are synthetic assumptions. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 274500000
+    },
+    "file": "presentation_v1_03-sybil-v0p8_batch02.yaml"
+  },
+  {
+    "group": "03-sybil-v0.8",
+    "stage": "batch03",
+    "name": "Study 03 Sybil verification 0.8 | B03 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11003. 200 supporters; 50/200/400 attempted aliases (0.25/1/2 per honest supporter). Verification strength 0.8; operational budget equals attempted identities. Base false-acceptance probability 0.5 and genuine rejection 0.01 are synthetic assumptions. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 274500000
+    },
+    "file": "presentation_v1_03-sybil-v0p8_batch03.yaml"
+  },
+  {
+    "group": "03-sybil-v0.8",
+    "stage": "batch04",
+    "name": "Study 03 Sybil verification 0.8 | B04 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11004. 200 supporters; 50/200/400 attempted aliases (0.25/1/2 per honest supporter). Verification strength 0.8; operational budget equals attempted identities. Base false-acceptance probability 0.5 and genuine rejection 0.01 are synthetic assumptions. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 274500000
+    },
+    "file": "presentation_v1_03-sybil-v0p8_batch04.yaml"
+  },
+  {
+    "group": "03-sybil-v1",
+    "stage": "pilot",
+    "name": "Study 03 Sybil verification 1 | PILOT 10 trials",
+    "description": "Presentation v1; seed 99001. 200 supporters; 50/200/400 attempted aliases (0.25/1/2 per honest supporter). Verification strength 1; operational budget equals attempted identities. Base false-acceptance probability 0.5 and genuine rejection 0.01 are synthetic assumptions. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 30,
+      "trajectory_runs": 720,
+      "work_units": 109800000
+    },
+    "file": "presentation_v1_03-sybil-v1_pilot.yaml"
+  },
+  {
+    "group": "03-sybil-v1",
+    "stage": "batch01",
+    "name": "Study 03 Sybil verification 1 | B01 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11001. 200 supporters; 50/200/400 attempted aliases (0.25/1/2 per honest supporter). Verification strength 1; operational budget equals attempted identities. Base false-acceptance probability 0.5 and genuine rejection 0.01 are synthetic assumptions. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 274500000
+    },
+    "file": "presentation_v1_03-sybil-v1_batch01.yaml"
+  },
+  {
+    "group": "03-sybil-v1",
+    "stage": "batch02",
+    "name": "Study 03 Sybil verification 1 | B02 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11002. 200 supporters; 50/200/400 attempted aliases (0.25/1/2 per honest supporter). Verification strength 1; operational budget equals attempted identities. Base false-acceptance probability 0.5 and genuine rejection 0.01 are synthetic assumptions. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 274500000
+    },
+    "file": "presentation_v1_03-sybil-v1_batch02.yaml"
+  },
+  {
+    "group": "03-sybil-v1",
+    "stage": "batch03",
+    "name": "Study 03 Sybil verification 1 | B03 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11003. 200 supporters; 50/200/400 attempted aliases (0.25/1/2 per honest supporter). Verification strength 1; operational budget equals attempted identities. Base false-acceptance probability 0.5 and genuine rejection 0.01 are synthetic assumptions. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 274500000
+    },
+    "file": "presentation_v1_03-sybil-v1_batch03.yaml"
+  },
+  {
+    "group": "03-sybil-v1",
+    "stage": "batch04",
+    "name": "Study 03 Sybil verification 1 | B04 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11004. 200 supporters; 50/200/400 attempted aliases (0.25/1/2 per honest supporter). Verification strength 1; operational budget equals attempted identities. Base false-acceptance probability 0.5 and genuine rejection 0.01 are synthetic assumptions. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 274500000
+    },
+    "file": "presentation_v1_03-sybil-v1_batch04.yaml"
+  },
+  {
+    "group": "04-infiltration-t0.2-h0.1",
+    "stage": "pilot",
+    "name": "Study 04 Infiltration turnout 0.2 hostile 0.1 | PILOT 10 trials",
+    "description": "Presentation v1; seed 99001. 200 ordinary supporters; genuine hostile joins on day zero, no aliases. 100 operations cover the maximum 86 intended joins. Quarterly elections expose 90/180-day waiting periods before and after expiry; read election/time-series rows. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 30,
+      "trajectory_runs": 720,
+      "work_units": 79056000
+    },
+    "file": "presentation_v1_04-infiltration-t0p2-h0p1_pilot.yaml"
+  },
+  {
+    "group": "04-infiltration-t0.2-h0.1",
+    "stage": "batch01",
+    "name": "Study 04 Infiltration turnout 0.2 hostile 0.1 | B01 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11001. 200 ordinary supporters; genuine hostile joins on day zero, no aliases. 100 operations cover the maximum 86 intended joins. Quarterly elections expose 90/180-day waiting periods before and after expiry; read election/time-series rows. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 197640000
+    },
+    "file": "presentation_v1_04-infiltration-t0p2-h0p1_batch01.yaml"
+  },
+  {
+    "group": "04-infiltration-t0.2-h0.1",
+    "stage": "batch02",
+    "name": "Study 04 Infiltration turnout 0.2 hostile 0.1 | B02 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11002. 200 ordinary supporters; genuine hostile joins on day zero, no aliases. 100 operations cover the maximum 86 intended joins. Quarterly elections expose 90/180-day waiting periods before and after expiry; read election/time-series rows. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 197640000
+    },
+    "file": "presentation_v1_04-infiltration-t0p2-h0p1_batch02.yaml"
+  },
+  {
+    "group": "04-infiltration-t0.2-h0.1",
+    "stage": "batch03",
+    "name": "Study 04 Infiltration turnout 0.2 hostile 0.1 | B03 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11003. 200 ordinary supporters; genuine hostile joins on day zero, no aliases. 100 operations cover the maximum 86 intended joins. Quarterly elections expose 90/180-day waiting periods before and after expiry; read election/time-series rows. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 197640000
+    },
+    "file": "presentation_v1_04-infiltration-t0p2-h0p1_batch03.yaml"
+  },
+  {
+    "group": "04-infiltration-t0.2-h0.1",
+    "stage": "batch04",
+    "name": "Study 04 Infiltration turnout 0.2 hostile 0.1 | B04 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11004. 200 ordinary supporters; genuine hostile joins on day zero, no aliases. 100 operations cover the maximum 86 intended joins. Quarterly elections expose 90/180-day waiting periods before and after expiry; read election/time-series rows. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 197640000
+    },
+    "file": "presentation_v1_04-infiltration-t0p2-h0p1_batch04.yaml"
+  },
+  {
+    "group": "04-infiltration-t0.2-h0.3",
+    "stage": "pilot",
+    "name": "Study 04 Infiltration turnout 0.2 hostile 0.3 | PILOT 10 trials",
+    "description": "Presentation v1; seed 99001. 200 ordinary supporters; genuine hostile joins on day zero, no aliases. 100 operations cover the maximum 86 intended joins. Quarterly elections expose 90/180-day waiting periods before and after expiry; read election/time-series rows. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 30,
+      "trajectory_runs": 720,
+      "work_units": 79056000
+    },
+    "file": "presentation_v1_04-infiltration-t0p2-h0p3_pilot.yaml"
+  },
+  {
+    "group": "04-infiltration-t0.2-h0.3",
+    "stage": "batch01",
+    "name": "Study 04 Infiltration turnout 0.2 hostile 0.3 | B01 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11001. 200 ordinary supporters; genuine hostile joins on day zero, no aliases. 100 operations cover the maximum 86 intended joins. Quarterly elections expose 90/180-day waiting periods before and after expiry; read election/time-series rows. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 197640000
+    },
+    "file": "presentation_v1_04-infiltration-t0p2-h0p3_batch01.yaml"
+  },
+  {
+    "group": "04-infiltration-t0.2-h0.3",
+    "stage": "batch02",
+    "name": "Study 04 Infiltration turnout 0.2 hostile 0.3 | B02 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11002. 200 ordinary supporters; genuine hostile joins on day zero, no aliases. 100 operations cover the maximum 86 intended joins. Quarterly elections expose 90/180-day waiting periods before and after expiry; read election/time-series rows. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 197640000
+    },
+    "file": "presentation_v1_04-infiltration-t0p2-h0p3_batch02.yaml"
+  },
+  {
+    "group": "04-infiltration-t0.2-h0.3",
+    "stage": "batch03",
+    "name": "Study 04 Infiltration turnout 0.2 hostile 0.3 | B03 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11003. 200 ordinary supporters; genuine hostile joins on day zero, no aliases. 100 operations cover the maximum 86 intended joins. Quarterly elections expose 90/180-day waiting periods before and after expiry; read election/time-series rows. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 197640000
+    },
+    "file": "presentation_v1_04-infiltration-t0p2-h0p3_batch03.yaml"
+  },
+  {
+    "group": "04-infiltration-t0.2-h0.3",
+    "stage": "batch04",
+    "name": "Study 04 Infiltration turnout 0.2 hostile 0.3 | B04 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11004. 200 ordinary supporters; genuine hostile joins on day zero, no aliases. 100 operations cover the maximum 86 intended joins. Quarterly elections expose 90/180-day waiting periods before and after expiry; read election/time-series rows. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 197640000
+    },
+    "file": "presentation_v1_04-infiltration-t0p2-h0p3_batch04.yaml"
+  },
+  {
+    "group": "04-infiltration-t0.6-h0.1",
+    "stage": "pilot",
+    "name": "Study 04 Infiltration turnout 0.6 hostile 0.1 | PILOT 10 trials",
+    "description": "Presentation v1; seed 99001. 200 ordinary supporters; genuine hostile joins on day zero, no aliases. 100 operations cover the maximum 86 intended joins. Quarterly elections expose 90/180-day waiting periods before and after expiry; read election/time-series rows. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 30,
+      "trajectory_runs": 720,
+      "work_units": 79056000
+    },
+    "file": "presentation_v1_04-infiltration-t0p6-h0p1_pilot.yaml"
+  },
+  {
+    "group": "04-infiltration-t0.6-h0.1",
+    "stage": "batch01",
+    "name": "Study 04 Infiltration turnout 0.6 hostile 0.1 | B01 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11001. 200 ordinary supporters; genuine hostile joins on day zero, no aliases. 100 operations cover the maximum 86 intended joins. Quarterly elections expose 90/180-day waiting periods before and after expiry; read election/time-series rows. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 197640000
+    },
+    "file": "presentation_v1_04-infiltration-t0p6-h0p1_batch01.yaml"
+  },
+  {
+    "group": "04-infiltration-t0.6-h0.1",
+    "stage": "batch02",
+    "name": "Study 04 Infiltration turnout 0.6 hostile 0.1 | B02 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11002. 200 ordinary supporters; genuine hostile joins on day zero, no aliases. 100 operations cover the maximum 86 intended joins. Quarterly elections expose 90/180-day waiting periods before and after expiry; read election/time-series rows. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 197640000
+    },
+    "file": "presentation_v1_04-infiltration-t0p6-h0p1_batch02.yaml"
+  },
+  {
+    "group": "04-infiltration-t0.6-h0.1",
+    "stage": "batch03",
+    "name": "Study 04 Infiltration turnout 0.6 hostile 0.1 | B03 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11003. 200 ordinary supporters; genuine hostile joins on day zero, no aliases. 100 operations cover the maximum 86 intended joins. Quarterly elections expose 90/180-day waiting periods before and after expiry; read election/time-series rows. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 197640000
+    },
+    "file": "presentation_v1_04-infiltration-t0p6-h0p1_batch03.yaml"
+  },
+  {
+    "group": "04-infiltration-t0.6-h0.1",
+    "stage": "batch04",
+    "name": "Study 04 Infiltration turnout 0.6 hostile 0.1 | B04 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11004. 200 ordinary supporters; genuine hostile joins on day zero, no aliases. 100 operations cover the maximum 86 intended joins. Quarterly elections expose 90/180-day waiting periods before and after expiry; read election/time-series rows. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 197640000
+    },
+    "file": "presentation_v1_04-infiltration-t0p6-h0p1_batch04.yaml"
+  },
+  {
+    "group": "04-infiltration-t0.6-h0.3",
+    "stage": "pilot",
+    "name": "Study 04 Infiltration turnout 0.6 hostile 0.3 | PILOT 10 trials",
+    "description": "Presentation v1; seed 99001. 200 ordinary supporters; genuine hostile joins on day zero, no aliases. 100 operations cover the maximum 86 intended joins. Quarterly elections expose 90/180-day waiting periods before and after expiry; read election/time-series rows. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 30,
+      "trajectory_runs": 720,
+      "work_units": 79056000
+    },
+    "file": "presentation_v1_04-infiltration-t0p6-h0p3_pilot.yaml"
+  },
+  {
+    "group": "04-infiltration-t0.6-h0.3",
+    "stage": "batch01",
+    "name": "Study 04 Infiltration turnout 0.6 hostile 0.3 | B01 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11001. 200 ordinary supporters; genuine hostile joins on day zero, no aliases. 100 operations cover the maximum 86 intended joins. Quarterly elections expose 90/180-day waiting periods before and after expiry; read election/time-series rows. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 197640000
+    },
+    "file": "presentation_v1_04-infiltration-t0p6-h0p3_batch01.yaml"
+  },
+  {
+    "group": "04-infiltration-t0.6-h0.3",
+    "stage": "batch02",
+    "name": "Study 04 Infiltration turnout 0.6 hostile 0.3 | B02 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11002. 200 ordinary supporters; genuine hostile joins on day zero, no aliases. 100 operations cover the maximum 86 intended joins. Quarterly elections expose 90/180-day waiting periods before and after expiry; read election/time-series rows. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 197640000
+    },
+    "file": "presentation_v1_04-infiltration-t0p6-h0p3_batch02.yaml"
+  },
+  {
+    "group": "04-infiltration-t0.6-h0.3",
+    "stage": "batch03",
+    "name": "Study 04 Infiltration turnout 0.6 hostile 0.3 | B03 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11003. 200 ordinary supporters; genuine hostile joins on day zero, no aliases. 100 operations cover the maximum 86 intended joins. Quarterly elections expose 90/180-day waiting periods before and after expiry; read election/time-series rows. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 197640000
+    },
+    "file": "presentation_v1_04-infiltration-t0p6-h0p3_batch03.yaml"
+  },
+  {
+    "group": "04-infiltration-t0.6-h0.3",
+    "stage": "batch04",
+    "name": "Study 04 Infiltration turnout 0.6 hostile 0.3 | B04 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11004. 200 ordinary supporters; genuine hostile joins on day zero, no aliases. 100 operations cover the maximum 86 intended joins. Quarterly elections expose 90/180-day waiting periods before and after expiry; read election/time-series rows. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 197640000
+    },
+    "file": "presentation_v1_04-infiltration-t0p6-h0p3_batch04.yaml"
+  },
+  {
+    "group": "05-turnout-h0.2-a0.5",
+    "stage": "pilot",
+    "name": "Study 05 Turnout honest 0.2 hostile 0.5 | PILOT 10 trials",
+    "description": "Presentation v1; seed 99001. 200 supporters; 15% recruited, 30 operations. Four defense packages: verification alone, +quorum, +incentive, +both. Separate cast-weight capture from proposal passage. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 40,
+      "trajectory_runs": 960,
+      "work_units": 80812800
+    },
+    "file": "presentation_v1_05-turnout-h0p2-a0p5_pilot.yaml"
+  },
+  {
+    "group": "05-turnout-h0.2-a0.5",
+    "stage": "batch01",
+    "name": "Study 05 Turnout honest 0.2 hostile 0.5 | B01 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11001. 200 supporters; 15% recruited, 30 operations. Four defense packages: verification alone, +quorum, +incentive, +both. Separate cast-weight capture from proposal passage. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 100,
+      "trajectory_runs": 2400,
+      "work_units": 202032000
+    },
+    "file": "presentation_v1_05-turnout-h0p2-a0p5_batch01.yaml"
+  },
+  {
+    "group": "05-turnout-h0.2-a0.5",
+    "stage": "batch02",
+    "name": "Study 05 Turnout honest 0.2 hostile 0.5 | B02 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11002. 200 supporters; 15% recruited, 30 operations. Four defense packages: verification alone, +quorum, +incentive, +both. Separate cast-weight capture from proposal passage. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 100,
+      "trajectory_runs": 2400,
+      "work_units": 202032000
+    },
+    "file": "presentation_v1_05-turnout-h0p2-a0p5_batch02.yaml"
+  },
+  {
+    "group": "05-turnout-h0.2-a0.5",
+    "stage": "batch03",
+    "name": "Study 05 Turnout honest 0.2 hostile 0.5 | B03 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11003. 200 supporters; 15% recruited, 30 operations. Four defense packages: verification alone, +quorum, +incentive, +both. Separate cast-weight capture from proposal passage. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 100,
+      "trajectory_runs": 2400,
+      "work_units": 202032000
+    },
+    "file": "presentation_v1_05-turnout-h0p2-a0p5_batch03.yaml"
+  },
+  {
+    "group": "05-turnout-h0.2-a0.5",
+    "stage": "batch04",
+    "name": "Study 05 Turnout honest 0.2 hostile 0.5 | B04 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11004. 200 supporters; 15% recruited, 30 operations. Four defense packages: verification alone, +quorum, +incentive, +both. Separate cast-weight capture from proposal passage. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 100,
+      "trajectory_runs": 2400,
+      "work_units": 202032000
+    },
+    "file": "presentation_v1_05-turnout-h0p2-a0p5_batch04.yaml"
+  },
+  {
+    "group": "05-turnout-h0.2-a1.0",
+    "stage": "pilot",
+    "name": "Study 05 Turnout honest 0.2 hostile 1.0 | PILOT 10 trials",
+    "description": "Presentation v1; seed 99001. 200 supporters; 15% recruited, 30 operations. Four defense packages: verification alone, +quorum, +incentive, +both. Separate cast-weight capture from proposal passage. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 40,
+      "trajectory_runs": 960,
+      "work_units": 80812800
+    },
+    "file": "presentation_v1_05-turnout-h0p2-a1p0_pilot.yaml"
+  },
+  {
+    "group": "05-turnout-h0.2-a1.0",
+    "stage": "batch01",
+    "name": "Study 05 Turnout honest 0.2 hostile 1.0 | B01 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11001. 200 supporters; 15% recruited, 30 operations. Four defense packages: verification alone, +quorum, +incentive, +both. Separate cast-weight capture from proposal passage. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 100,
+      "trajectory_runs": 2400,
+      "work_units": 202032000
+    },
+    "file": "presentation_v1_05-turnout-h0p2-a1p0_batch01.yaml"
+  },
+  {
+    "group": "05-turnout-h0.2-a1.0",
+    "stage": "batch02",
+    "name": "Study 05 Turnout honest 0.2 hostile 1.0 | B02 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11002. 200 supporters; 15% recruited, 30 operations. Four defense packages: verification alone, +quorum, +incentive, +both. Separate cast-weight capture from proposal passage. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 100,
+      "trajectory_runs": 2400,
+      "work_units": 202032000
+    },
+    "file": "presentation_v1_05-turnout-h0p2-a1p0_batch02.yaml"
+  },
+  {
+    "group": "05-turnout-h0.2-a1.0",
+    "stage": "batch03",
+    "name": "Study 05 Turnout honest 0.2 hostile 1.0 | B03 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11003. 200 supporters; 15% recruited, 30 operations. Four defense packages: verification alone, +quorum, +incentive, +both. Separate cast-weight capture from proposal passage. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 100,
+      "trajectory_runs": 2400,
+      "work_units": 202032000
+    },
+    "file": "presentation_v1_05-turnout-h0p2-a1p0_batch03.yaml"
+  },
+  {
+    "group": "05-turnout-h0.2-a1.0",
+    "stage": "batch04",
+    "name": "Study 05 Turnout honest 0.2 hostile 1.0 | B04 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11004. 200 supporters; 15% recruited, 30 operations. Four defense packages: verification alone, +quorum, +incentive, +both. Separate cast-weight capture from proposal passage. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 100,
+      "trajectory_runs": 2400,
+      "work_units": 202032000
+    },
+    "file": "presentation_v1_05-turnout-h0p2-a1p0_batch04.yaml"
+  },
+  {
+    "group": "05-turnout-h0.6-a0.5",
+    "stage": "pilot",
+    "name": "Study 05 Turnout honest 0.6 hostile 0.5 | PILOT 10 trials",
+    "description": "Presentation v1; seed 99001. 200 supporters; 15% recruited, 30 operations. Four defense packages: verification alone, +quorum, +incentive, +both. Separate cast-weight capture from proposal passage. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 40,
+      "trajectory_runs": 960,
+      "work_units": 80812800
+    },
+    "file": "presentation_v1_05-turnout-h0p6-a0p5_pilot.yaml"
+  },
+  {
+    "group": "05-turnout-h0.6-a0.5",
+    "stage": "batch01",
+    "name": "Study 05 Turnout honest 0.6 hostile 0.5 | B01 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11001. 200 supporters; 15% recruited, 30 operations. Four defense packages: verification alone, +quorum, +incentive, +both. Separate cast-weight capture from proposal passage. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 100,
+      "trajectory_runs": 2400,
+      "work_units": 202032000
+    },
+    "file": "presentation_v1_05-turnout-h0p6-a0p5_batch01.yaml"
+  },
+  {
+    "group": "05-turnout-h0.6-a0.5",
+    "stage": "batch02",
+    "name": "Study 05 Turnout honest 0.6 hostile 0.5 | B02 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11002. 200 supporters; 15% recruited, 30 operations. Four defense packages: verification alone, +quorum, +incentive, +both. Separate cast-weight capture from proposal passage. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 100,
+      "trajectory_runs": 2400,
+      "work_units": 202032000
+    },
+    "file": "presentation_v1_05-turnout-h0p6-a0p5_batch02.yaml"
+  },
+  {
+    "group": "05-turnout-h0.6-a0.5",
+    "stage": "batch03",
+    "name": "Study 05 Turnout honest 0.6 hostile 0.5 | B03 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11003. 200 supporters; 15% recruited, 30 operations. Four defense packages: verification alone, +quorum, +incentive, +both. Separate cast-weight capture from proposal passage. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 100,
+      "trajectory_runs": 2400,
+      "work_units": 202032000
+    },
+    "file": "presentation_v1_05-turnout-h0p6-a0p5_batch03.yaml"
+  },
+  {
+    "group": "05-turnout-h0.6-a0.5",
+    "stage": "batch04",
+    "name": "Study 05 Turnout honest 0.6 hostile 0.5 | B04 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11004. 200 supporters; 15% recruited, 30 operations. Four defense packages: verification alone, +quorum, +incentive, +both. Separate cast-weight capture from proposal passage. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 100,
+      "trajectory_runs": 2400,
+      "work_units": 202032000
+    },
+    "file": "presentation_v1_05-turnout-h0p6-a0p5_batch04.yaml"
+  },
+  {
+    "group": "05-turnout-h0.6-a1.0",
+    "stage": "pilot",
+    "name": "Study 05 Turnout honest 0.6 hostile 1.0 | PILOT 10 trials",
+    "description": "Presentation v1; seed 99001. 200 supporters; 15% recruited, 30 operations. Four defense packages: verification alone, +quorum, +incentive, +both. Separate cast-weight capture from proposal passage. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 40,
+      "trajectory_runs": 960,
+      "work_units": 80812800
+    },
+    "file": "presentation_v1_05-turnout-h0p6-a1p0_pilot.yaml"
+  },
+  {
+    "group": "05-turnout-h0.6-a1.0",
+    "stage": "batch01",
+    "name": "Study 05 Turnout honest 0.6 hostile 1.0 | B01 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11001. 200 supporters; 15% recruited, 30 operations. Four defense packages: verification alone, +quorum, +incentive, +both. Separate cast-weight capture from proposal passage. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 100,
+      "trajectory_runs": 2400,
+      "work_units": 202032000
+    },
+    "file": "presentation_v1_05-turnout-h0p6-a1p0_batch01.yaml"
+  },
+  {
+    "group": "05-turnout-h0.6-a1.0",
+    "stage": "batch02",
+    "name": "Study 05 Turnout honest 0.6 hostile 1.0 | B02 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11002. 200 supporters; 15% recruited, 30 operations. Four defense packages: verification alone, +quorum, +incentive, +both. Separate cast-weight capture from proposal passage. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 100,
+      "trajectory_runs": 2400,
+      "work_units": 202032000
+    },
+    "file": "presentation_v1_05-turnout-h0p6-a1p0_batch02.yaml"
+  },
+  {
+    "group": "05-turnout-h0.6-a1.0",
+    "stage": "batch03",
+    "name": "Study 05 Turnout honest 0.6 hostile 1.0 | B03 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11003. 200 supporters; 15% recruited, 30 operations. Four defense packages: verification alone, +quorum, +incentive, +both. Separate cast-weight capture from proposal passage. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 100,
+      "trajectory_runs": 2400,
+      "work_units": 202032000
+    },
+    "file": "presentation_v1_05-turnout-h0p6-a1p0_batch03.yaml"
+  },
+  {
+    "group": "05-turnout-h0.6-a1.0",
+    "stage": "batch04",
+    "name": "Study 05 Turnout honest 0.6 hostile 1.0 | B04 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11004. 200 supporters; 15% recruited, 30 operations. Four defense packages: verification alone, +quorum, +incentive, +both. Separate cast-weight capture from proposal passage. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 100,
+      "trajectory_runs": 2400,
+      "work_units": 202032000
+    },
+    "file": "presentation_v1_05-turnout-h0p6-a1p0_batch04.yaml"
+  },
+  {
+    "group": "06-defenses-set1",
+    "stage": "pilot",
+    "name": "Study 06 Defense policies set 1 | PILOT 10 trials",
+    "description": "Presentation v1; seed 99001. Policies 1-3 of the existing ten-policy study, against 200 attempted aliases in a 200-supporter population. Quarterly elections; matched seeds across sets. Compare cost, capture, and restrictions; do not pool duplicate controls. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 30,
+      "trajectory_runs": 720,
+      "work_units": 105408000
+    },
+    "file": "presentation_v1_06-defenses-set1_pilot.yaml"
+  },
+  {
+    "group": "06-defenses-set1",
+    "stage": "batch01",
+    "name": "Study 06 Defense policies set 1 | B01 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11001. Policies 1-3 of the existing ten-policy study, against 200 attempted aliases in a 200-supporter population. Quarterly elections; matched seeds across sets. Compare cost, capture, and restrictions; do not pool duplicate controls. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 263520000
+    },
+    "file": "presentation_v1_06-defenses-set1_batch01.yaml"
+  },
+  {
+    "group": "06-defenses-set1",
+    "stage": "batch02",
+    "name": "Study 06 Defense policies set 1 | B02 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11002. Policies 1-3 of the existing ten-policy study, against 200 attempted aliases in a 200-supporter population. Quarterly elections; matched seeds across sets. Compare cost, capture, and restrictions; do not pool duplicate controls. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 263520000
+    },
+    "file": "presentation_v1_06-defenses-set1_batch02.yaml"
+  },
+  {
+    "group": "06-defenses-set1",
+    "stage": "batch03",
+    "name": "Study 06 Defense policies set 1 | B03 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11003. Policies 1-3 of the existing ten-policy study, against 200 attempted aliases in a 200-supporter population. Quarterly elections; matched seeds across sets. Compare cost, capture, and restrictions; do not pool duplicate controls. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 263520000
+    },
+    "file": "presentation_v1_06-defenses-set1_batch03.yaml"
+  },
+  {
+    "group": "06-defenses-set1",
+    "stage": "batch04",
+    "name": "Study 06 Defense policies set 1 | B04 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11004. Policies 1-3 of the existing ten-policy study, against 200 attempted aliases in a 200-supporter population. Quarterly elections; matched seeds across sets. Compare cost, capture, and restrictions; do not pool duplicate controls. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 263520000
+    },
+    "file": "presentation_v1_06-defenses-set1_batch04.yaml"
+  },
+  {
+    "group": "06-defenses-set2",
+    "stage": "pilot",
+    "name": "Study 06 Defense policies set 2 | PILOT 10 trials",
+    "description": "Presentation v1; seed 99001. Policies 4-6 of the existing ten-policy study, against 200 attempted aliases in a 200-supporter population. Quarterly elections; matched seeds across sets. Compare cost, capture, and restrictions; do not pool duplicate controls. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 30,
+      "trajectory_runs": 720,
+      "work_units": 105408000
+    },
+    "file": "presentation_v1_06-defenses-set2_pilot.yaml"
+  },
+  {
+    "group": "06-defenses-set2",
+    "stage": "batch01",
+    "name": "Study 06 Defense policies set 2 | B01 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11001. Policies 4-6 of the existing ten-policy study, against 200 attempted aliases in a 200-supporter population. Quarterly elections; matched seeds across sets. Compare cost, capture, and restrictions; do not pool duplicate controls. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 263520000
+    },
+    "file": "presentation_v1_06-defenses-set2_batch01.yaml"
+  },
+  {
+    "group": "06-defenses-set2",
+    "stage": "batch02",
+    "name": "Study 06 Defense policies set 2 | B02 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11002. Policies 4-6 of the existing ten-policy study, against 200 attempted aliases in a 200-supporter population. Quarterly elections; matched seeds across sets. Compare cost, capture, and restrictions; do not pool duplicate controls. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 263520000
+    },
+    "file": "presentation_v1_06-defenses-set2_batch02.yaml"
+  },
+  {
+    "group": "06-defenses-set2",
+    "stage": "batch03",
+    "name": "Study 06 Defense policies set 2 | B03 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11003. Policies 4-6 of the existing ten-policy study, against 200 attempted aliases in a 200-supporter population. Quarterly elections; matched seeds across sets. Compare cost, capture, and restrictions; do not pool duplicate controls. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 263520000
+    },
+    "file": "presentation_v1_06-defenses-set2_batch03.yaml"
+  },
+  {
+    "group": "06-defenses-set2",
+    "stage": "batch04",
+    "name": "Study 06 Defense policies set 2 | B04 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11004. Policies 4-6 of the existing ten-policy study, against 200 attempted aliases in a 200-supporter population. Quarterly elections; matched seeds across sets. Compare cost, capture, and restrictions; do not pool duplicate controls. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 263520000
+    },
+    "file": "presentation_v1_06-defenses-set2_batch04.yaml"
+  },
+  {
+    "group": "06-defenses-set3",
+    "stage": "pilot",
+    "name": "Study 06 Defense policies set 3 | PILOT 10 trials",
+    "description": "Presentation v1; seed 99001. Policies 7-9 of the existing ten-policy study, against 200 attempted aliases in a 200-supporter population. Quarterly elections; matched seeds across sets. Compare cost, capture, and restrictions; do not pool duplicate controls. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 30,
+      "trajectory_runs": 720,
+      "work_units": 105408000
+    },
+    "file": "presentation_v1_06-defenses-set3_pilot.yaml"
+  },
+  {
+    "group": "06-defenses-set3",
+    "stage": "batch01",
+    "name": "Study 06 Defense policies set 3 | B01 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11001. Policies 7-9 of the existing ten-policy study, against 200 attempted aliases in a 200-supporter population. Quarterly elections; matched seeds across sets. Compare cost, capture, and restrictions; do not pool duplicate controls. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 263520000
+    },
+    "file": "presentation_v1_06-defenses-set3_batch01.yaml"
+  },
+  {
+    "group": "06-defenses-set3",
+    "stage": "batch02",
+    "name": "Study 06 Defense policies set 3 | B02 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11002. Policies 7-9 of the existing ten-policy study, against 200 attempted aliases in a 200-supporter population. Quarterly elections; matched seeds across sets. Compare cost, capture, and restrictions; do not pool duplicate controls. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 263520000
+    },
+    "file": "presentation_v1_06-defenses-set3_batch02.yaml"
+  },
+  {
+    "group": "06-defenses-set3",
+    "stage": "batch03",
+    "name": "Study 06 Defense policies set 3 | B03 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11003. Policies 7-9 of the existing ten-policy study, against 200 attempted aliases in a 200-supporter population. Quarterly elections; matched seeds across sets. Compare cost, capture, and restrictions; do not pool duplicate controls. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 263520000
+    },
+    "file": "presentation_v1_06-defenses-set3_batch03.yaml"
+  },
+  {
+    "group": "06-defenses-set3",
+    "stage": "batch04",
+    "name": "Study 06 Defense policies set 3 | B04 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11004. Policies 7-9 of the existing ten-policy study, against 200 attempted aliases in a 200-supporter population. Quarterly elections; matched seeds across sets. Compare cost, capture, and restrictions; do not pool duplicate controls. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 3,
+      "total_trials": 75,
+      "trajectory_runs": 1800,
+      "work_units": 263520000
+    },
+    "file": "presentation_v1_06-defenses-set3_batch04.yaml"
+  },
+  {
+    "group": "06-defenses-set4",
+    "stage": "pilot",
+    "name": "Study 06 Defense policies set 4 | PILOT 10 trials",
+    "description": "Presentation v1; seed 99001. Policies 10-10 of the existing ten-policy study, against 200 attempted aliases in a 200-supporter population. Quarterly elections; matched seeds across sets. Compare cost, capture, and restrictions; do not pool duplicate controls. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 1,
+      "total_trials": 10,
+      "trajectory_runs": 240,
+      "work_units": 35136000
+    },
+    "file": "presentation_v1_06-defenses-set4_pilot.yaml"
+  },
+  {
+    "group": "06-defenses-set4",
+    "stage": "batch01",
+    "name": "Study 06 Defense policies set 4 | B01 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11001. Policies 10-10 of the existing ten-policy study, against 200 attempted aliases in a 200-supporter population. Quarterly elections; matched seeds across sets. Compare cost, capture, and restrictions; do not pool duplicate controls. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 1,
+      "total_trials": 25,
+      "trajectory_runs": 600,
+      "work_units": 87840000
+    },
+    "file": "presentation_v1_06-defenses-set4_batch01.yaml"
+  },
+  {
+    "group": "06-defenses-set4",
+    "stage": "batch02",
+    "name": "Study 06 Defense policies set 4 | B02 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11002. Policies 10-10 of the existing ten-policy study, against 200 attempted aliases in a 200-supporter population. Quarterly elections; matched seeds across sets. Compare cost, capture, and restrictions; do not pool duplicate controls. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 1,
+      "total_trials": 25,
+      "trajectory_runs": 600,
+      "work_units": 87840000
+    },
+    "file": "presentation_v1_06-defenses-set4_batch02.yaml"
+  },
+  {
+    "group": "06-defenses-set4",
+    "stage": "batch03",
+    "name": "Study 06 Defense policies set 4 | B03 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11003. Policies 10-10 of the existing ten-policy study, against 200 attempted aliases in a 200-supporter population. Quarterly elections; matched seeds across sets. Compare cost, capture, and restrictions; do not pool duplicate controls. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 1,
+      "total_trials": 25,
+      "trajectory_runs": 600,
+      "work_units": 87840000
+    },
+    "file": "presentation_v1_06-defenses-set4_batch03.yaml"
+  },
+  {
+    "group": "06-defenses-set4",
+    "stage": "batch04",
+    "name": "Study 06 Defense policies set 4 | B04 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11004. Policies 10-10 of the existing ten-policy study, against 200 attempted aliases in a 200-supporter population. Quarterly elections; matched seeds across sets. Compare cost, capture, and restrictions; do not pool duplicate controls. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 1,
+      "total_trials": 25,
+      "trajectory_runs": 600,
+      "work_units": 87840000
+    },
+    "file": "presentation_v1_06-defenses-set4_batch04.yaml"
+  },
+  {
+    "group": "07-economics",
+    "stage": "pilot",
+    "name": "Study 07 Economic resilience | PILOT 10 trials",
+    "description": "Presentation v1; seed 99001. 16 cells: fees 0/30 x population 100/300 x downturn severity 0.3/0.7 x no capital/30k capital. Outside capital has ownership but no voting rights. Report cash/runway/retention by cell; population and club budgets are explicit assumptions, not per-capita matched funding. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 16,
+      "total_trials": 160,
+      "trajectory_runs": 2880,
+      "work_units": 7506720
+    },
+    "file": "presentation_v1_07-economics_pilot.yaml"
+  },
+  {
+    "group": "07-economics",
+    "stage": "batch01",
+    "name": "Study 07 Economic resilience | B01 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11001. 16 cells: fees 0/30 x population 100/300 x downturn severity 0.3/0.7 x no capital/30k capital. Outside capital has ownership but no voting rights. Report cash/runway/retention by cell; population and club budgets are explicit assumptions, not per-capita matched funding. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 16,
+      "total_trials": 400,
+      "trajectory_runs": 7200,
+      "work_units": 18766800
+    },
+    "file": "presentation_v1_07-economics_batch01.yaml"
+  },
+  {
+    "group": "07-economics",
+    "stage": "batch02",
+    "name": "Study 07 Economic resilience | B02 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11002. 16 cells: fees 0/30 x population 100/300 x downturn severity 0.3/0.7 x no capital/30k capital. Outside capital has ownership but no voting rights. Report cash/runway/retention by cell; population and club budgets are explicit assumptions, not per-capita matched funding. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 16,
+      "total_trials": 400,
+      "trajectory_runs": 7200,
+      "work_units": 18766800
+    },
+    "file": "presentation_v1_07-economics_batch02.yaml"
+  },
+  {
+    "group": "07-economics",
+    "stage": "batch03",
+    "name": "Study 07 Economic resilience | B03 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11003. 16 cells: fees 0/30 x population 100/300 x downturn severity 0.3/0.7 x no capital/30k capital. Outside capital has ownership but no voting rights. Report cash/runway/retention by cell; population and club budgets are explicit assumptions, not per-capita matched funding. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 16,
+      "total_trials": 400,
+      "trajectory_runs": 7200,
+      "work_units": 18766800
+    },
+    "file": "presentation_v1_07-economics_batch03.yaml"
+  },
+  {
+    "group": "07-economics",
+    "stage": "batch04",
+    "name": "Study 07 Economic resilience | B04 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11004. 16 cells: fees 0/30 x population 100/300 x downturn severity 0.3/0.7 x no capital/30k capital. Outside capital has ownership but no voting rights. Report cash/runway/retention by cell; population and club budgets are explicit assumptions, not per-capita matched funding. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 16,
+      "total_trials": 400,
+      "trajectory_runs": 7200,
+      "work_units": 18766800
+    },
+    "file": "presentation_v1_07-economics_batch04.yaml"
+  },
+  {
+    "group": "07-combined",
+    "stage": "pilot",
+    "name": "Study 07 Combined crisis extension | PILOT 10 trials",
+    "description": "Presentation v1; seed 99001. 200 supporters; four cells: revenue-loss severity 0.3/0.7 x contribution budget 10k/100k. Downturn severity stays 0.5. One lump-sum attack operation; retain matched shock/defense references. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 40,
+      "trajectory_runs": 1200,
+      "work_units": 88718400
+    },
+    "file": "presentation_v1_07-combined_pilot.yaml"
+  },
+  {
+    "group": "07-combined",
+    "stage": "batch01",
+    "name": "Study 07 Combined crisis extension | B01 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11001. 200 supporters; four cells: revenue-loss severity 0.3/0.7 x contribution budget 10k/100k. Downturn severity stays 0.5. One lump-sum attack operation; retain matched shock/defense references. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 100,
+      "trajectory_runs": 3000,
+      "work_units": 221796000
+    },
+    "file": "presentation_v1_07-combined_batch01.yaml"
+  },
+  {
+    "group": "07-combined",
+    "stage": "batch02",
+    "name": "Study 07 Combined crisis extension | B02 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11002. 200 supporters; four cells: revenue-loss severity 0.3/0.7 x contribution budget 10k/100k. Downturn severity stays 0.5. One lump-sum attack operation; retain matched shock/defense references. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 100,
+      "trajectory_runs": 3000,
+      "work_units": 221796000
+    },
+    "file": "presentation_v1_07-combined_batch02.yaml"
+  },
+  {
+    "group": "07-combined",
+    "stage": "batch03",
+    "name": "Study 07 Combined crisis extension | B03 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11003. 200 supporters; four cells: revenue-loss severity 0.3/0.7 x contribution budget 10k/100k. Downturn severity stays 0.5. One lump-sum attack operation; retain matched shock/defense references. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 100,
+      "trajectory_runs": 3000,
+      "work_units": 221796000
+    },
+    "file": "presentation_v1_07-combined_batch03.yaml"
+  },
+  {
+    "group": "07-combined",
+    "stage": "batch04",
+    "name": "Study 07 Combined crisis extension | B04 of 04 - 25 trials",
+    "description": "Presentation v1; seed 11004. 200 supporters; four cells: revenue-loss severity 0.3/0.7 x contribution budget 10k/100k. Downturn severity stays 0.5. One lump-sum attack operation; retain matched shock/defense references. Pilot is separate from the 100-trial presentation dataset. Run each B01-B04 once.",
+    "workload": {
+      "grid_cells": 4,
+      "total_trials": 100,
+      "trajectory_runs": 3000,
+      "work_units": 221796000
+    },
+    "file": "presentation_v1_07-combined_batch04.yaml"
+  }
+]
