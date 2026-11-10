@@ -30,6 +30,12 @@ BINARY_METRICS = {
 
 
 def _clean(value):
+    # Most event fields are native scalar values. Avoid expensive NumPy/ABC/
+    # path/date introspection for every scalar in multi-million-row exports.
+    if value is None or type(value) in (str, int, bool):
+        return value
+    if type(value) is float:
+        return value if math.isfinite(value) else None
     if isinstance(value, np.generic):
         value = value.item()
     if isinstance(value, Mapping):

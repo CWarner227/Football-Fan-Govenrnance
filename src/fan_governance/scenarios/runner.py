@@ -1,6 +1,7 @@
 """Paired multi-period experiments, with attacks isolated from election mechanics."""
 
 import json
+from copy import deepcopy
 from dataclasses import dataclass, field
 from hashlib import sha256
 from itertools import product
@@ -97,10 +98,15 @@ def _owner(state, account):
 
 
 def _initial_state(population, config, variant):
-    people = {s.supporter_id: s.model_copy(deep=True) for s in population.supporters}
+    # Supporter fields are scalar except this scalar-valued attributes dictionary.
+    # Copy the mutable dictionary without recursively copying every scalar field.
+    people = {
+        s.supporter_id: s.model_copy(update={"attributes": dict(s.attributes)})
+        for s in population.supporters
+    }
     accounts = {}
     for member in population.memberships:
-        m = member.model_copy(deep=True)
+        m = member.model_copy()
         accounts[m.member_id] = Account(
             m.member_id,
             IdentityClaim(
@@ -137,7 +143,9 @@ def _project(state, config, proposal, streams, registry, turnout_boost, economic
         identity = account.claim.resolved_id or account.claim.claim_id
         person = state.people[account.person_id]
         if identity not in supporters:
-            supporters[identity] = person.model_copy(deep=True, update={"supporter_id": identity})
+            supporters[identity] = person.model_copy(
+                update={"supporter_id": identity, "attributes": dict(person.attributes)}
+            )
         member = account.membership.model_copy(
             update={
                 "supporter_id": identity,
@@ -178,11 +186,11 @@ def _project(state, config, proposal, streams, registry, turnout_boost, economic
         account = sources[member.member_id]
         person = state.people[account.person_id]
         prefix = f"election.{state.day}.person.{account.person_id}"
-        prng, vrng = (
-            streams.generator(prefix + ".turnout"),
-            streams.generator(prefix + ".preference"),
-        )
         if account.person_id not in baseline_draws:
+            prng, vrng = (
+                streams.generator(prefix + ".turnout"),
+                streams.generator(prefix + ".preference"),
+            )
             # Perceived aliases must not create additional independent behavioral draws.
             true_member = canonical_accounts[account.person_id].membership.model_copy(
                 update={"supporter_id": account.person_id}
@@ -198,8 +206,6 @@ def _project(state, config, proposal, streams, registry, turnout_boost, economic
             baseline_draws[account.person_id] = (joined, option)
         joined, option = baseline_draws[account.person_id]
         # Separate streams keep alias count from changing subsequent hostile draws.
-        prng = streams.generator(prefix + ".hostile_turnout")
-        vrng = streams.generator(prefix + ".coordination")
         override = state.overrides.get(account.account_id)
         if override is not None and override.until_day < state.day:
             override = None
@@ -225,6 +231,8 @@ def _project(state, config, proposal, streams, registry, turnout_boost, economic
                 joined = joined or override.force_turnout
                 option = override.option
             else:
+                prng = streams.generator(prefix + ".hostile_turnout")
+                vrng = streams.generator(prefix + ".coordination")
                 joined = prng.random() < actor.flags.get("hostile_turnout", 1)
                 if vrng.random() < actor.coordination_level:
                     option = actor.objective.get("target", proposal.options[0])
@@ -272,6 +280,8 @@ def _investors(state, economic_config, *, proposal=None, voting=None, cap=None, 
     shares are conservative when another same-date investor declines the offer.
     """
     economy = state.economic_state
+    if not economic_config.investors:
+        return
     if proposal is not None:
         if voting is None or month is None:
             raise ValueError("Investor offers require a voting strategy and simulated month")
@@ -593,16 +603,37 @@ def _trajectory(
     return rows, times, state
 
 
+def _can_reuse_variants(config, custom_registry):
+    return not (custom_registry or config.attacks or config.defenses or config.economics.shocks)
+
+
 def run_scenario(
-    config: ScenarioConfig, *, registry=None, progress_callback=None
+    config: ScenarioConfig, *, registry=None, progress_callback=None, workers=1
+) -> ScenarioResults:
+    if type(workers) is not int or workers < 1:
+        raise ValueError("workers must be a positive integer")
+    if workers > 1:
+        if registry is not None:
+            raise ValueError("Parallel execution requires the installed default registry")
+        from fan_governance.scenarios.parallel import run_parallel
+
+        return run_parallel(config, workers, progress_callback)
+    return _run_scenario_serial(config, registry=registry, progress_callback=progress_callback)
+
+
+def _run_scenario_serial(
+    config: ScenarioConfig, *, registry=None, progress_callback=None, task=None
 ) -> ScenarioResults:
     started = perf_counter()
     output = ScenarioResults()
-    registry = registry if registry is not None else default_scenario_registry()
+    custom_registry = registry is not None
+    registry = registry if custom_registry else default_scenario_registry()
     expanded = list(expanded_configs(config))
-    total_trials = sum(c.experiment.trials for _, c, _ in expanded)
+    if task is not None:
+        expanded = [expanded[task[0]]]
+    total_trials = 1 if task is not None else sum(c.experiment.trials for _, c, _ in expanded)
     total_trajectories = sum(
-        c.experiment.trials
+        (1 if task is not None else c.experiment.trials)
         * len(effective_voting_specs(c.simulation))
         * (3 + bool(c.attacks and c.economics.shocks) + bool(c.attacks and c.defenses))
         for _, c, _ in expanded
@@ -644,7 +675,7 @@ def run_scenario(
             default_registry().create("voting", model)
     report()
     for grid_id, candidate, labels in expanded:
-        for trial in range(candidate.experiment.trials):
+        for trial in [task[1]] if task is not None else range(candidate.experiment.trials):
             streams = RandomStreams(candidate.experiment.seed, trial)
             population = SyntheticPopulationGenerator().generate(
                 candidate.simulation.population,
@@ -656,6 +687,8 @@ def run_scenario(
                 ),
             )
             for model in effective_voting_specs(candidate.simulation):
+                reusable = _can_reuse_variants(candidate, custom_registry)
+                cached_trajectory = None
                 paired = {}
                 stressed_reference = None
                 if candidate.attacks and candidate.economics.shocks:
@@ -677,9 +710,20 @@ def run_scenario(
                         "voting_model": model.name,
                         "variant": variant,
                     }
-                    rows, times, state = trajectory(
-                        candidate, population, model, variant, streams, registry
-                    )
+                    if cached_trajectory is not None:
+                        rows, times, state = (
+                            deepcopy(cached_trajectory[0]),
+                            deepcopy(cached_trajectory[1]),
+                            cached_trajectory[2],
+                        )
+                        completed_trajectories += 1
+                        report()
+                    else:
+                        rows, times, state = trajectory(
+                            candidate, population, model, variant, streams, registry
+                        )
+                        if reusable:
+                            cached_trajectory = (deepcopy(rows), deepcopy(times), state)
                     paired[variant] = rows
                     paired[variant + "_times"] = times
                     baseline = (

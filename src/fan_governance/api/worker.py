@@ -13,7 +13,8 @@ from pathlib import Path
 from fan_governance.api.jobs import engine_version
 from fan_governance.api.validation import validate_configuration
 from fan_governance.scenarios.output import _clean, aggregate_trials, paired_defense_effectiveness
-from fan_governance.scenarios.runner import run_scenario
+from fan_governance.scenarios.parallel import recommended_workers
+from fan_governance.scenarios.runner import expanded_configs, run_scenario
 from fan_governance.storage.filesystem import FileRepository
 
 
@@ -27,7 +28,9 @@ def atomic_rows(destination: Path, rows, *, lines=True):
     try:
         with os.fdopen(descriptor, "w", encoding="utf-8") as stream:
             for row in rows:
-                json.dump(_clean(row), stream, allow_nan=False, separators=(",", ":"))
+                # dumps uses the C encoder and writes one complete row rather
+                # than issuing a Python write for each JSON token.
+                stream.write(json.dumps(_clean(row), allow_nan=False, separators=(",", ":")))
                 if lines:
                     stream.write("\n")
             stream.flush()
@@ -101,7 +104,18 @@ def execute(root: Path, run_id: str):
     total = record["progress"]["total_trials"]
     reporter = ProgressReporter(directory, total)
     reporter.publish(force=True)
-    results = run_scenario(config, progress_callback=reporter)
+    requested = int(os.environ.get("FAN_GOVERNANCE_TRIAL_WORKERS", "0"))
+    if requested < 0:
+        raise ValueError("FAN_GOVERNANCE_TRIAL_WORKERS must be nonnegative")
+    workers = min(
+        total,
+        recommended_workers(
+            max(c.simulation.population.size for _, c, _ in expanded_configs(config)),
+            requested=requested,
+        ),
+    )
+    print(f"Executing {total} trial/cell tasks with {workers} parallel worker(s)", flush=True)
+    results = run_scenario(config, progress_callback=reporter, workers=workers)
     reporter.finalizing(0, 8)
     tables = {
         "summary": results.summary,

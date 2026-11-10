@@ -196,3 +196,24 @@ Final complete-suite verification after all progress changes: **414 passed,
 check. Whole-repository Ruff lint passed and all **122 Python files** passed the
 format check. The full run overlapped Docker build/browser work; its duration
 is not an engine performance benchmark.
+
+
+## Parallel execution and performance fixes (2026-11-10)
+
+The timed-out Study 01 pilot was reproduced and profiled. Sequential model copies,
+unused investor/RNG work, identical variant execution, and JSON event export were
+measured bottlenecks. [PERFORMANCE.md](PERFORMANCE.md) records the full evidence.
+
+The same isolated trial fell from 29.44 to 6.72 seconds with identical scientific
+table fingerprints. The full original pilot configuration completed on eight CPU
+processes in **143.3 seconds**, including 10.8 million event rows; its original
+execution had timed out after 1,800.57 seconds. No scientific parameters or timeout
+were reduced. All six full-pilot artifact tables matched byte for byte across
+repeat verification runs. Repeated verification seeds are not extra samples.
+
+Final checks: **420 Python tests passed, 1 Windows-specific skip**; Ruff lint and
+format checks passed for **124 files**. **Two real Chromium workflows passed in
+18.2 seconds** against Docker, including measured progress and UI cancellation.
+A real abrupt-owner-death test verifies descendant trial processes exit. The
+private liveness pipe uses spawn so children cannot retain the parent's writer.
+Parallel task/result buffering is bounded; final output rows remain in memory.

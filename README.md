@@ -50,6 +50,12 @@ Open [the local dashboard](http://localhost:5173) or
 unauthenticated local research tool; keep a single API process bound to loopback.
 Configuration and history persist under ignored `data/dashboard/`.
 
+Simulation jobs use CPU processes for independent trials, automatically choosing
+up to eight workers within CPU/memory limits. For manual control, copy
+`.env.example` to `.env`, set `FAN_GOVERNANCE_TRIAL_WORKERS` (`0` automatic, `1`
+serial, or a larger positive worker count), then restart with Start-Dashboard.cmd.
+Explicit counts remain capped by resources. See [performance notes](docs/PERFORMANCE.md).
+
 Presentation studies: double-click **Import-Study-Configurations.cmd** to add
 the seven studies and combined-crisis extension to Saved configurations. Open
 **Experiments**, search `Study 01` through `Study 07`, then load a pilot or named

@@ -71,11 +71,28 @@ each trajectory and independent trial counts across every grid cell. The worker
 publishes atomic progress snapshots at most twice per second during simulation;
 the API reads these without changing lifecycle ownership. A transient Windows
 reader lock skips an advisory snapshot rather than failing scientific execution.
-The first 95% represents simulation trajectories, 95–99% tracks result
+The first 95% represents simulation trajectories, 95â€“99% tracks result
 finalization, and the manager publishes 100% only after successful worker exit
 and committed artifacts. ETA is based on measured elapsed time per completed
 trajectory after at least one trajectory; later cells may take different time.
 Finalization has no reliable ETA. Queue wait is excluded from the estimate.
+Dashboard jobs automatically split independent grid/trial combinations across
+CPU processes (normally up to eight), bounded by available CPUs, cgroup quotas,
+and a conservative memory budget. Matching models, variants and reference
+trajectories remain inside each trial. Results merge in original grid/trial
+order, preserving RNG stream identities and exports. In-flight and out-of-order
+results are bounded to one worker window. Spawned child workers watch a separate
+parent-death pipe, so forced cancellation, timeout or owner failure does not leave
+trial computation running. A single active dashboard job can use several CPUs;
+`max_concurrent_runs=1` does not restrict it to one CPU.
+
+Identical no-attack/no-defense/no-shock variants reuse their trajectory while
+retaining separately labeled output rows. Custom injected registries disable this
+reuse. Supporter copies retain isolated mutable attributes. Investor projection
+is skipped when there are no investors; unrelated hostile RNG streams are not
+constructed for ordinary supporters. Event export uses scalar cleanup fast paths
+and C-backed per-row encoding without changing JSON values.
+
 Cancellation terminates the process and waits for its exit. Timeout produces a
 failed run after terminating computation. Queued records are reloaded at startup;
 previously running records become failed rather than being reported as resumed.
