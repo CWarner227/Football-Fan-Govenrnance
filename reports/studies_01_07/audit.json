@@ -1,0 +1,22 @@
+{
+  "configurations": 95,
+  "presentation_configurations": 76,
+  "pilot_configurations": 19,
+  "presentation_trial_cells": 7600,
+  "presentation_summaries": 136800,
+  "pilot_summaries": 13680,
+  "condition_model_variant_estimates": 1368,
+  "economic_period_rows_reconciled": 1801800,
+  "financial_reconciliation_failures": 0,
+  "cash_transitions_checked": 1663200,
+  "presentation_elections": 342000,
+  "presentation_timeseries_rows": 1659600,
+  "source_sha256": "5000a5ca588e65b340c6590586e1832ade4f7851049394d89ecba49c4e266b06",
+  "manifest_row_counts_verified": true,
+  "copied_artifact_hashes_verified": 475,
+  "analysis_environment": {
+    "python": "3.14.7",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "08af8f9ae5874178aa4c64dd71dfd597": {
+    "trajectory_count": 600,
+    "join_events": 600,
+    "expired_trajectories": 600,
+    "spent_full_budget_count": 600,
+    "zero_hostile_membership_survival_count": 600,
+    "zero_final_attacker_power_count": 600,
+    "capture_count": 0,
+    "expiration_day_counts": {
+      "31": 600
+    },
+    "expiration_reason_counts": {
+      "unaffordable": 600
+    },
+    "all_target_paths_expired": true,
+    "events_sha256": "3a4e0d8244dad059aa6435ee665471a84a0b28b8575de4f875ff69fee8dc9235"
+  },
+  "7ec659e4b9f74d8b83c71044a4554e70": {
+    "trajectory_count": 600,
+    "join_events": 600,
+    "expired_trajectories": 600,
+    "spent_full_budget_count": 600,
+    "zero_hostile_membership_survival_count": 600,
+    "zero_final_attacker_power_count": 600,
+    "capture_count": 0,
+    "expiration_day_counts": {
+      "31": 600
+    },
+    "expiration_reason_counts": {
+      "unaffordable": 600
+    },
+    "all_target_paths_expired": true,
+    "events_sha256": "6be72e3f01d43ae23ea0cbee9bbac4a67a18e8c079b84a0662e2b3a9e7862242"
+  },
+  "a28e9337ec974e5f8617e170ff0e1d2d": {
+    "trajectory_count": 600,
+    "join_events": 600,
+    "expired_trajectories": 600,
+    "spent_full_budget_count": 600,
+    "zero_hostile_membership_survival_count": 600,
+    "zero_final_attacker_power_count": 600,
+    "capture_count": 0,
+    "expiration_day_counts": {
+      "31": 600
+    },
+    "expiration_reason_counts": {
+      "unaffordable": 600
+    },
+    "all_target_paths_expired": true,
+    "events_sha256": "fb32845c4ef100a8e71a31be0899750325e74f933707b2371693dd4e6297f59a"
+  },
+  "7edf4ebc6e3349d68e3ff4d901e98715": {
+    "trajectory_count": 600,
+    "join_events": 600,
+    "expired_trajectories": 600,
+    "spent_full_budget_count": 600,
+    "zero_hostile_membership_survival_count": 600,
+    "zero_final_attacker_power_count": 600,
+    "capture_count": 0,
+    "expiration_day_counts": {
+      "31": 600
+    },
+    "expiration_reason_counts": {
+      "unaffordable": 600
+    },
+    "all_target_paths_expired": true,
+    "events_sha256": "3c94a1fe1f2f011adc8f4d134d6f79ba001269e7bb211eeb27f3c5dc9c0ad593"
+  }
+}

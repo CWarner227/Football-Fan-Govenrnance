@@ -1,0 +1,6 @@
+# Preserve binary report offsets when checking out on Windows.
+*.pdf binary
+*.png binary
+
+# Matplotlib emits meaningful multi-line SVG path data with trailing spaces.
+reports/studies_01_07/figures/*.svg text eol=lf -whitespace

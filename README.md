@@ -216,6 +216,8 @@ Effective voters is inverse concentration, not an actual participant headcount.
 
 ## Documentation
 
+- [Studies 01–07 research report](reports/studies_01_07/RESEARCH_REPORT.md)
+- [Campaign execution, audits and reproduction](docs/RESEARCH_CAMPAIGN.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [Extending models](docs/EXTENDING_MODELS.md)
 - [Simulation assumptions and formulas](docs/SIMULATION_ASSUMPTIONS.md)

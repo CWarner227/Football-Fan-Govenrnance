@@ -53,6 +53,7 @@ Desktop.ini
 *.tmp
 *.swp
 *~
+/tmp/
 .phase3-wheel-*/
 
 # Local dashboard storage and JavaScript builds
