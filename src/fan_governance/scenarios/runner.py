@@ -359,7 +359,9 @@ def _investors(state, economic_config, *, proposal=None, voting=None, cap=None, 
         state.record("investor_voting_rights", target_id=identity, capital=capital)
 
 
-def _trajectory(config, population, model, variant, streams, scenario_registry):
+def _trajectory(
+    config, population, model, variant, streams, scenario_registry, progress_callback=None
+):
     registry = default_registry()
     state = _initial_state(population, config, variant)
     strategies = [
@@ -586,14 +588,45 @@ def _trajectory(config, population, model, variant, streams, scenario_registry):
                 }
             )
         previous = day
+        if progress_callback is not None:
+            progress_callback((day + 1) / (clock.end_day + 1))
     return rows, times, state
 
 
-def run_scenario(config: ScenarioConfig, *, registry=None) -> ScenarioResults:
+def run_scenario(
+    config: ScenarioConfig, *, registry=None, progress_callback=None
+) -> ScenarioResults:
     started = perf_counter()
     output = ScenarioResults()
     registry = registry if registry is not None else default_scenario_registry()
     expanded = list(expanded_configs(config))
+    total_trials = sum(c.experiment.trials for _, c, _ in expanded)
+    total_trajectories = sum(
+        c.experiment.trials
+        * len(effective_voting_specs(c.simulation))
+        * (3 + bool(c.attacks and c.economics.shocks) + bool(c.attacks and c.defenses))
+        for _, c, _ in expanded
+    )
+    completed_trials = completed_trajectories = 0
+
+    def report(fraction=0):
+        if progress_callback is not None:
+            progress_callback(
+                {
+                    "completed_trials": completed_trials,
+                    "total_trials": total_trials,
+                    "completed_trajectories": completed_trajectories + fraction,
+                    "total_trajectories": total_trajectories,
+                }
+            )
+
+    def trajectory(*args):
+        nonlocal completed_trajectories
+        result = _trajectory(*args, progress_callback=report if progress_callback else None)
+        completed_trajectories += 1
+        report()
+        return result
+
     for _, candidate, _ in expanded:
         for spec in candidate.attacks:
             create_attack(spec.name, spec.parameters, registry=registry)
@@ -609,6 +642,7 @@ def run_scenario(config: ScenarioConfig, *, registry=None) -> ScenarioResults:
             raise ValueError("Composed quorum policies require a common basis")
         for model in effective_voting_specs(candidate.simulation):
             default_registry().create("voting", model)
+    report()
     for grid_id, candidate, labels in expanded:
         for trial in range(candidate.experiment.trials):
             streams = RandomStreams(candidate.experiment.seed, trial)
@@ -625,13 +659,13 @@ def run_scenario(config: ScenarioConfig, *, registry=None) -> ScenarioResults:
                 paired = {}
                 stressed_reference = None
                 if candidate.attacks and candidate.economics.shocks:
-                    reference_rows, _, _ = _trajectory(
+                    reference_rows, _, _ = trajectory(
                         candidate, population, model, "attack_control", streams, registry
                     )
                     stressed_reference = {r["day"]: r for r in reference_rows}
                 defense_reference = None
                 if candidate.attacks and candidate.defenses:
-                    reference_rows, _, _ = _trajectory(
+                    reference_rows, _, _ = trajectory(
                         candidate, population, model, "defense_control", streams, registry
                     )
                     defense_reference = {r["day"]: r for r in reference_rows}
@@ -643,7 +677,7 @@ def run_scenario(config: ScenarioConfig, *, registry=None) -> ScenarioResults:
                         "voting_model": model.name,
                         "variant": variant,
                     }
-                    rows, times, state = _trajectory(
+                    rows, times, state = trajectory(
                         candidate, population, model, variant, streams, registry
                     )
                     paired[variant] = rows
@@ -825,6 +859,8 @@ def run_scenario(config: ScenarioConfig, *, registry=None) -> ScenarioResults:
                 defended["capture_prevented"] = (
                     unprotected["capture_success"] and not defended["capture_success"]
                 )
+            completed_trials += 1
+            report()
     from fan_governance.output.provenance import source_provenance
 
     output.metadata = {

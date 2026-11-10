@@ -80,6 +80,14 @@ trial can require five trajectories without becoming five independent trials.
 The population profile selector loads one of six existing YAML profiles through
 `/api/v1/profiles`; it does not maintain another browser-only profile library.
 
+While a run executes, its Results page shows measured completion and an
+approximate time remaining, refreshed about every 1.5 seconds. Timing starts
+after the job leaves the queue. The estimate appears after the first complete
+model/variant trajectory, then updates as work completes; changing population
+sizes, attacks and grid settings can make it rise or fall. It is not a deadline.
+The bar reserves its last portion for **Finalizing results** and reaches 100%
+only on successful completion. Cancelled or failed jobs never show a live ETA.
+
 ## Pages and research interpretation
 
 | Page | Purpose |

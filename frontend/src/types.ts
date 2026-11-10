@@ -62,6 +62,8 @@ export interface Run {
     completed_trials: number | null;
     total_trials: number;
     percentage: number | null;
+    estimated_remaining_seconds?: number | null;
+    phase?: string | null;
   };
 }
 export interface Scenario {

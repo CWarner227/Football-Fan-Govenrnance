@@ -102,8 +102,8 @@ process concurrency and timeouts; it is not an operating-system memory quota.
 
 The application is an unauthenticated trusted local research tool. Only one API
 process may own its data directory. Blockchain is a disabled extension boundary,
-not an implemented integration. Intermediate trial progress remains indeterminate
-where the engine exposes no reliable callback.
+not an implemented integration. Progress now uses optional measured engine
+callbacks; remaining time is approximate and depends on workload variation.
 
 ## Docker delivery verification (2026-11-04)
 
@@ -159,3 +159,40 @@ Observed checks:
 The source YAMLs, workload manifest, reproducible generator/importer and
 `PRESENTATION_STUDIES.md` explain batch identity, pilot exclusion, model/variant
 matching, redundant controls, and export-based cross-seed uncertainty analysis.
+
+
+## Measured progress and remaining time (2026-11-10)
+
+The worker now receives optional engine callbacks for model/variant/reference
+trajectories and intermediate calendar advancement. The API exposes measured
+percentage, completed independent trials, an approximate remaining-seconds field,
+and execution phase. Startup/queued jobs do not invent an ETA; finalization is
+labeled separately, and only successful committed output reaches 100%.
+
+Observed focused verification:
+
+- **17 backend progress/lifecycle/API tests passed**, including a real running
+  worker exposing a nonzero percentage and ETA before cancellation.
+- Callback/no-callback executions produced identical scientific summaries,
+  elections and events for a heterogeneous grid with extra matched references.
+- A regression reproduces Windows reader locks and verifies that an advisory
+  progress snapshot cannot abort valid computation.
+- **22 frontend tests passed**, including percentage, approximate remaining-time,
+  startup, queued, finalizing and terminal display behavior. ESLint, TypeScript
+  and production builds passed.
+- **2 real Chromium workflows passed in 32.4 seconds against the rebuilt Docker
+  app**. The cancellation workflow first asserted measured progress and ETA,
+  captured a screenshot, then cancelled through the UI and verified that the
+  progress bar disappeared. The running screenshot was visually inspected.
+- Checked for active/queued user runs before replacing the local container; none
+  were active. The updated app is running with the existing persistent volume.
+
+Estimates use elapsed simulation time per completed trajectory. Heterogeneous
+cells, membership growth, attacker activity and export costs can change runtime;
+this is not a promised completion deadline.
+
+Final complete-suite verification after all progress changes: **414 passed,
+1 skipped in 488.94 seconds**; the skip is the existing Windows symlink privilege
+check. Whole-repository Ruff lint passed and all **122 Python files** passed the
+format check. The full run overlapped Docker build/browser work; its duration
+is not an engine performance benchmark.

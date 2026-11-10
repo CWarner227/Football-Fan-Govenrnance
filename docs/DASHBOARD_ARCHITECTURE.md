@@ -65,8 +65,17 @@ matched references contribute to the estimate.
 
 Submitting a run persists a normalized snapshot before queueing it. Only the
 manager writes the run record. A worker produces separate progress and output
-files. Exact intermediate trial callbacks are unavailable in the current engine;
-running progress stays indeterminate until completed work can be established.
+files. Optional engine callbacks report completed model/variant trajectories,
+including matched reference runs, with intermediate calendar advancement inside
+each trajectory and independent trial counts across every grid cell. The worker
+publishes atomic progress snapshots at most twice per second during simulation;
+the API reads these without changing lifecycle ownership. A transient Windows
+reader lock skips an advisory snapshot rather than failing scientific execution.
+The first 95% represents simulation trajectories, 95–99% tracks result
+finalization, and the manager publishes 100% only after successful worker exit
+and committed artifacts. ETA is based on measured elapsed time per completed
+trajectory after at least one trajectory; later cells may take different time.
+Finalization has no reliable ETA. Queue wait is excluded from the estimate.
 Cancellation terminates the process and waits for its exit. Timeout produces a
 failed run after terminating computation. Queued records are reloaded at startup;
 previously running records become failed rather than being reported as resumed.

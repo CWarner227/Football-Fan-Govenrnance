@@ -116,7 +116,9 @@ test("loads a real scenario, edits, validates, executes, charts, exports and reo
   });
   await page.getByRole("link", { name: "Compare", exact: true }).click();
   await page
-    .getByRole("checkbox", { name: /^Playwright small research run [0-9a-f]{8}/ })
+    .getByRole("checkbox", {
+      name: /^Playwright small research run [0-9a-f]{8}/,
+    })
     .first()
     .check();
   await page
@@ -150,7 +152,31 @@ test("cancels real queued or running computation from run monitor", async ({
   expect(response.ok()).toBeTruthy();
   const run = await response.json();
   await page.goto(`/results/${run.id}`);
-  await page.getByRole("button", { name: "Cancel run", exact: true }).click();
+  try {
+    await expect
+      .poll(
+        async () =>
+          Number(await page.getByRole("progressbar").getAttribute("value")),
+        { timeout: 60000 },
+      )
+      .toBeGreaterThan(0);
+    await expect(page.getByText(/About .* remaining/)).toBeVisible({
+      timeout: 60000,
+    });
+    const measured = await (await request.get(`/api/v1/runs/${run.id}`)).json();
+    expect(measured.progress.percentage).toBeGreaterThan(0);
+    expect(measured.progress.percentage).toBeLessThan(100);
+    expect(
+      measured.progress.estimated_remaining_seconds,
+    ).toBeGreaterThanOrEqual(0);
+    await page.screenshot({
+      path: "test-results/screenshots/progress.png",
+      fullPage: true,
+    });
+    await page.getByRole("button", { name: "Cancel run", exact: true }).click();
+  } finally {
+    await request.post(`/api/v1/runs/${run.id}/cancel`);
+  }
   await expect(page.getByText("cancelled", { exact: true })).toBeVisible();
   await expect(page.getByRole("progressbar")).toHaveCount(0);
 });

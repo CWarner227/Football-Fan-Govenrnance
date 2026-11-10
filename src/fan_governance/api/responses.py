@@ -22,9 +22,12 @@ class TableResponse(PageResponse):
 
 
 class ProgressResponse(BaseModel):
+    model_config = ConfigDict(allow_inf_nan=False)
     completed_trials: int | None
     total_trials: int
-    percentage: float | None
+    percentage: float | None = Field(ge=0, le=100)
+    estimated_remaining_seconds: float | None = Field(default=None, ge=0)
+    phase: Literal["simulating", "finalizing", "completed", "failed", "cancelled"] | None = None
 
 
 class RunResponse(BaseModel):

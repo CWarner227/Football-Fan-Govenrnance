@@ -44,6 +44,8 @@ def test_small_real_engine_job_persists_completed_artifacts(tmp_path):
             "completed_trials": 1,
             "total_trials": 1,
             "percentage": 100,
+            "estimated_remaining_seconds": 0,
+            "phase": "completed",
         }
         artifacts = repository.directory("runs", run["id"]) / "artifacts"
         rows = [json.loads(line) for line in (artifacts / "summary.jsonl").read_text().splitlines()]

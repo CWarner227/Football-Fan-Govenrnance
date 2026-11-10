@@ -6,6 +6,7 @@ import os
 import sys
 import tempfile
 import threading
+import time
 import traceback
 from pathlib import Path
 
@@ -36,6 +37,54 @@ def atomic_rows(destination: Path, rows, *, lines=True):
         Path(temporary).unlink(missing_ok=True)
 
 
+class ProgressReporter:
+    """Publish at most twice per second; reserve completion for committed artifacts."""
+
+    def __init__(self, directory, total_trials, *, clock=time.monotonic):
+        self.directory, self.clock = directory, clock
+        self.started = clock()
+        self.last_write = float("-inf")
+        self.latest = {
+            "completed_trials": 0,
+            "total_trials": total_trials,
+            "percentage": 0,
+            "estimated_remaining_seconds": None,
+            "phase": "simulating",
+        }
+
+    def __call__(self, event):
+        elapsed = max(0, self.clock() - self.started)
+        completed, total = event["completed_trajectories"], event["total_trajectories"]
+        fraction = min(1.0, max(0.0, completed / total))
+        self.latest.update(
+            completed_trials=event["completed_trials"],
+            percentage=95 * fraction,
+            estimated_remaining_seconds=elapsed * (1 - fraction) / fraction
+            if completed >= 1 and 0 < fraction < 1
+            else None,
+        )
+        self.publish(force=event["completed_trials"] == event["total_trials"])
+
+    def publish(self, *, force=False):
+        now = self.clock()
+        if force or now - self.last_write >= 0.5:
+            try:
+                atomic_json(self.directory / "progress.json", self.latest)
+            except PermissionError:
+                # Windows readers can briefly deny replacement. Keep the last
+                # snapshot and retry at the next update; progress is advisory.
+                return
+            self.last_write = now
+
+    def finalizing(self, completed, total):
+        self.latest.update(
+            phase="finalizing",
+            percentage=95 + 4 * completed / total,
+            estimated_remaining_seconds=None,
+        )
+        self.publish(force=True)
+
+
 def execute(root: Path, run_id: str):
     repository = FileRepository(root)
     record = repository.get("runs", run_id)
@@ -50,15 +99,10 @@ def execute(root: Path, run_id: str):
     config.output.directory = artifacts
     config.simulation.output.directory = artifacts
     total = record["progress"]["total_trials"]
-    atomic_json(
-        directory / "progress.json",
-        {
-            "completed_trials": None,
-            "total_trials": total,
-            "percentage": None,
-        },
-    )
-    results = run_scenario(config)
+    reporter = ProgressReporter(directory, total)
+    reporter.publish(force=True)
+    results = run_scenario(config, progress_callback=reporter)
+    reporter.finalizing(0, 8)
     tables = {
         "summary": results.summary,
         "elections": results.elections,
@@ -67,10 +111,12 @@ def execute(root: Path, run_id: str):
         "aggregate": aggregate_trials(results.summary),
         "defense_effectiveness": paired_defense_effectiveness(results.summary),
     }
-    for name, rows in tables.items():
+    for index, (name, rows) in enumerate(tables.items(), 1):
         atomic_rows(artifacts / f"{name}.jsonl", rows)
+        reporter.finalizing(index, 8)
     configuration = record["configuration"]
     atomic_json(artifacts / "configuration.json", configuration)
+    reporter.finalizing(7, 8)
     manifest = {
         "label": "Synthetic simulation results",
         "configuration": configuration,
@@ -82,14 +128,7 @@ def execute(root: Path, run_id: str):
         "uncertainty": "Wilson 95% intervals for binary trial outcomes; continuous trial quantiles. Groups preserve scenario/grid/model/variant.",
     }
     atomic_json(artifacts / "manifest.json", manifest)
-    atomic_json(
-        directory / "progress.json",
-        {
-            "completed_trials": total,
-            "total_trials": total,
-            "percentage": 100,
-        },
-    )
+    reporter.finalizing(8, 8)
     atomic_json(directory / "success.json", {"run_id": run_id, "status": "completed"})
 
 

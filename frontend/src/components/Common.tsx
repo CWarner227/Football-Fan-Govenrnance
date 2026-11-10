@@ -233,6 +233,48 @@ export function ExecutionHistory({ runs }: { runs: Run[] }) {
     </section>
   );
 }
+export function RunProgress({ run }: { run: Run }) {
+  if (!["queued", "running"].includes(run.status)) return null;
+  const progress = run.progress;
+  const queued = run.status === "queued";
+  const finalizing = progress.phase === "finalizing";
+  const seconds = progress.estimated_remaining_seconds;
+  const percentage = progress.percentage;
+  let remaining = "Estimating time remaining…";
+  if (seconds != null && Number.isFinite(seconds)) {
+    const amount =
+      seconds < 60
+        ? Math.max(1, Math.ceil(seconds))
+        : seconds < 3600
+          ? Math.ceil(seconds / 60)
+          : Math.ceil(seconds / 3600);
+    const unit = seconds < 60 ? "second" : seconds < 3600 ? "minute" : "hour";
+    remaining = `About ${amount} ${unit}${amount === 1 ? "" : "s"} remaining`;
+  }
+  return (
+    <div aria-live="polite">
+      <progress
+        aria-label="Run progress"
+        {...(queued || percentage == null
+          ? {}
+          : { value: percentage, max: 100 })}
+      />
+      <p className="hint">
+        {queued
+          ? "Waiting in queue. Timing starts when execution begins."
+          : finalizing
+            ? "Finalizing results…"
+            : percentage == null
+              ? "Execution in progress; exact progress is not available."
+              : `${Math.round(percentage * 10) / 10}% complete`}
+      </p>
+      {!queued && !finalizing && percentage != null && (
+        <p className="hint">{remaining}. Time remaining is an estimate.</p>
+      )}
+    </div>
+  );
+}
+
 export function RunMonitor({ id }: { id: string }) {
   const client = useQueryClient();
   const run = useQuery({
@@ -290,17 +332,7 @@ export function RunMonitor({ id }: { id: string }) {
       </dl>
       {["queued", "running"].includes(r.status) && (
         <>
-          <progress
-            aria-label="Run progress"
-            {...(r.progress.percentage === null
-              ? {}
-              : { value: r.progress.percentage, max: 100 })}
-          />
-          <p className="hint">
-            {r.progress.percentage === null
-              ? "Execution in progress; exact progress is not available."
-              : `${r.progress.percentage}% complete`}
-          </p>
+          <RunProgress run={r} />
           <button
             className="secondary"
             onClick={() => cancel.mutate()}

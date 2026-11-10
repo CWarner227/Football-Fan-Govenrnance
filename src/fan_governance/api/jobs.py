@@ -16,6 +16,7 @@ from typing import Any
 from uuid import uuid4
 
 from fan_governance import __version__
+from fan_governance.api.responses import ProgressResponse
 from fan_governance.api.validation import validate_configuration
 from fan_governance.scenarios.runner import expanded_configs
 
@@ -112,7 +113,26 @@ class JobManager:
             record = self.repository.get("runs", run_id)
             if record["status"] == "running" and run_id in self._active:
                 record["elapsed_seconds"] = max(0.0, time.monotonic() - self._active[run_id][1])
+                self._read_progress(record)
             return record
+
+    def _read_progress(self, record):
+        path = self.repository.directory("runs", record["id"]) / "progress.json"
+        try:
+            if path.is_symlink() or path.is_junction() or path.stat().st_size > 16384:
+                return
+            progress = ProgressResponse.model_validate_json(path.read_text(encoding="utf-8"))
+            if (
+                progress.phase in {"simulating", "finalizing"}
+                and progress.total_trials == record["progress"]["total_trials"]
+                and progress.completed_trials is not None
+                and 0 <= progress.completed_trials <= progress.total_trials
+                and progress.percentage is not None
+                and progress.percentage < 100
+            ):
+                record["progress"] = progress.model_dump()
+        except (OSError, ValueError):
+            pass  # Missing/partial legacy progress never implies execution failure.
 
     def list(self) -> list[dict]:
         with self._lock:
@@ -135,6 +155,8 @@ class JobManager:
             process.wait()
 
     def _finish(self, record, status, error=None):
+        if record["status"] == "running":
+            self._read_progress(record)
         record["status"] = status
         record["error"] = error
         record["completed_at"] = now()
@@ -157,7 +179,11 @@ class JobManager:
                 "completed_trials": total,
                 "total_trials": total,
                 "percentage": 100,
+                "estimated_remaining_seconds": 0,
+                "phase": "completed",
             }
+        else:
+            record["progress"].update(estimated_remaining_seconds=None, phase=status)
         self.repository.save("runs", record["id"], record)
 
     def cancel(self, run_id) -> dict:
