@@ -85,8 +85,8 @@ def main():
     )
     headings = [
         (
-            "1  Caps limited the wealthy attack",
-            "Study 02 · proportional voting\n250,000 contribution; 300,000 actor budget",
+            "1  Caps reduce concentration",
+            "Study 01 · wealth-unequal profile\nFunding proposals; 10,000 supporters",
         ),
         (
             "2  Waiting delayed genuine infiltration",
@@ -107,20 +107,32 @@ def main():
         ax.tick_params(axis="y", length=0, pad=10)
 
     ax = axes[0]
-    reference = get("02-wealthy", "Contribution 250,000", "proportional", "unprotected")
-    defended = get("02-wealthy", "Contribution 250,000", "proportional", "defended")
-    for y, row, color in [(0, reference, RED), (1, defended, TEAL)]:
-        val = dot(ax, row, "capture_success", y, color)
-        ax.barh(y, val, height=0.28, color=color, alpha=0.15)
-    ax.set(ylim=(1.6, -0.6), xlim=(-0.08, 1.12), xlabel="Any-election capture probability")
-    ax.set_yticks([0, 1], ["Unprotected", "Verification\n+ cap 5"])
-    ax.set_xticks([0, 0.5, 1])
+    for y, model in enumerate(("proportional", "capped")):
+        record = get("01-baseline", "Wealth unequal / funding", model, "control")
+        for offset, metric, color in [(-0.17, "top_1_share", RED), (0.17, "bottom50_power", TEAL)]:
+            val = float(record[metric + "_mean"])
+            ax.barh(y + offset, val, height=0.28, color=color)
+            ax.text(
+                val + 0.012,
+                y + offset,
+                f"{val:.1%}",
+                va="center",
+                color=color,
+                fontsize=13,
+                fontweight="bold",
+            )
+    ax.set(ylim=(1.6, -0.6), xlim=(0, 0.55), xlabel="Mean share of potential voting power")
+    ax.set_yticks([0, 1], ["Proportional", "Capped"])
+    ax.set_xticks([0, 0.1, 0.2, 0.3, 0.4, 0.5])
     ax.xaxis.set_major_formatter(PercentFormatter(1))
-    fig.text(0.055, 0.208, "100% → 0% capture", fontsize=17, fontweight="bold", color=TEAL)
+    x = ax.get_position().x0
+    fig.text(x - 0.035, 0.69, "Most powerful 1%", fontsize=9, color=RED, fontweight="bold")
+    fig.text(x + 0.105, 0.69, "Bottom half by wealth", fontsize=9, color=TEAL, fontweight="bold")
+    fig.text(0.055, 0.208, "Top 1% power: 38.7% → 1.6%", fontsize=16, fontweight="bold", color=TEAL)
     fig.text(
         0.055,
         0.15,
-        "The tested package limited this single-contributor attack.\nVerification and the cap were applied together.",
+        "The bottom half by wealth gained power: 2.3% → 28.2%.\nGroups are defined by voting power and wealth, respectively.",
         fontsize=10,
         color=MUTED,
         linespacing=1.45,
@@ -137,7 +149,7 @@ def main():
         ax.hlines(y, 0, day, color=color, lw=6, alpha=0.22)
         ax.scatter(day, y, color=color, s=90, zorder=3)
         ax.annotate(
-            f"Day {day:.0f}",
+            f"{float(row['capture_success_mean']):.0%} captured",
             (day, y),
             xytext=(0, 14),
             textcoords="offset points",
@@ -167,24 +179,27 @@ def main():
     )
 
     ax = axes[2]
-    verification = get("05-turnout-h0.2-a1.0", "Verify 1", "equal", "defended")
-    quorum = get("05-turnout-h0.2-a1.0", "Verify 1 + Quorum 0.4", "equal", "defended")
-    for y, metric in [(0, "capture_success"), (1, "passed")]:
-        ax.plot(
-            [float(verification[metric + "_mean"]), float(quorum[metric + "_mean"])],
-            [y, y],
-            color="#c3ced3",
-            lw=2,
-        )
-        dot(ax, verification, metric, y - 0.13, RED, 12)
-        dot(ax, quorum, metric, y + 0.13, TEAL, -25)
-    ax.set(ylim=(1.6, -0.6), xlim=(-0.08, 1.12), xlabel="Trial fraction")
-    ax.set_yticks([0, 1], ["Any-election\ncapture", "Final proposal\npassage"])
-    ax.set_xticks([0, 0.5, 1])
+    packages = [
+        "Verify 1",
+        "Verify 1 + Quorum 0.4",
+        "Verify 1 + Incentive 0.2",
+        "Verify 1 + Quorum 0.4 + Incentive 0.2",
+    ]
+    for y, package in enumerate(packages):
+        record = get("05-turnout-h0.2-a1.0", package, "equal", "defended")
+        dot(ax, record, "capture_success", y - 0.14, RED, 10)
+        dot(ax, record, "passed", y + 0.14, TEAL, -22)
+    ax.set(ylim=(3.6, -0.6), xlim=(-0.08, 1.12), xlabel="Trial fraction")
+    ax.set_yticks(
+        [0, 1, 2, 3],
+        ["Verification only", "+ 40% quorum", "+ turnout incentive", "+ quorum + incentive"],
+        fontsize=10,
+    )
+    ax.set_xticks([0, 0.2, 0.4, 0.6, 0.8, 1])
     ax.xaxis.set_major_formatter(PercentFormatter(1))
     x = ax.get_position().x0
-    fig.text(x, 0.69, "Verification only", fontsize=9, color=RED, fontweight="bold")
-    fig.text(x + 0.115, 0.69, "+ 40% quorum", fontsize=9, color=TEAL, fontweight="bold")
+    fig.text(x - 0.035, 0.69, "Any-election capture", fontsize=9, color=RED, fontweight="bold")
+    fig.text(x + 0.115, 0.69, "Final proposal passage", fontsize=9, color=TEAL, fontweight="bold")
     fig.text(
         0.695, 0.208, "42% capture; passage 100% → 0%", fontsize=16, fontweight="bold", color=TEAL
     )
@@ -208,7 +223,7 @@ def main():
     fig.text(
         0.045,
         0.047,
-        "Whiskers: pointwise 95% Wilson intervals (panels 1 and 3); n=100 per condition. Panel 2: observed mean first-capture day; all 100 trials captured.",
+        "Panel 1: mean potential power shares. Panel 2: endpoint labels show trials captured within the year; x-axis shows mean first-capture day. Panel 3: 95% Wilson intervals.",
         fontsize=10,
         color=MUTED,
     )
